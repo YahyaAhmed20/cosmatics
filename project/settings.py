@@ -36,7 +36,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     
-    'accounts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'accounts',
 
 
     'allauth',
@@ -215,8 +215,15 @@ SITE_ID = 1
 
 
 # بهذه الإعدادات الجديدة:
-ACCOUNT_LOGIN_METHODS = {'email'}
-ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+# ACCOUNT_LOGIN_METHODS = {'email'}
+# ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+
+
+
+
+# ACCOUNT_SIGNUP_METHOD = 'email'  # استخدام البريد الإلكتروني فقط
+# ACCOUNT_EMAIL_VERIFICATION = 'mandatory'  # التأكد من أن المستخدمين يتأكدون من بريدهم الإلكتروني
+
 
 # حافظ على بقية الإعدادات:
 SITE_ID = 1
@@ -224,3 +231,6 @@ LOGIN_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_EMAIL_VERIFICATION = 'optional'
 SOCIALACCOUNT_LOGIN_ON_GET = True
+
+ACCOUNT_AUTHENTICATED_REDIRECT_URL = '/'  # إعادة توجيه المستخدمين بعد تسجيل الدخول
+ACCOUNT_SIGNUP_REDIRECT_URL = '/'  # إعادة توجيه المستخدمين بعد التسجيل

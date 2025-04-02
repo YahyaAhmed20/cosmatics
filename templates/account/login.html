@@ -29,7 +29,7 @@
                     {% endif %}
                 {% endif %}
                 
-                <form method="post" action="{% url 'login' %}">
+                <form method="post" action="{% url 'account_login' %}">
                     {% csrf_token %}
                     {% bootstrap_form form %}
                     
@@ -38,7 +38,7 @@
                 </form>
                 
                 <div class="text-center mt-3">
-                    <a href="{% url 'password_reset' %}" class="text-muted">نسيت كلمة المرور؟</a>
+                    <a href="" class="text-muted">نسيت كلمة المرور؟</a>
                 </div>
                 
                 <div class="separator my-4">
