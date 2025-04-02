@@ -1,0 +1,14 @@
+<!-- templates/payment_page.html -->
+<div class="payment_page">
+    <h1>Confirm Payment</h1>
+    <p>Appointment Details:</p>
+    <ul>
+        <li>Name: {{ appointment.full_name }}</li>
+        <li>Email: {{ appointment.email }}</li>
+        <li>Date: {{ appointment.appointment_date }}</li>
+    </ul>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="button button_1 intro_button trans_200">Confirm Payment</button>
+    </form>
+</div>

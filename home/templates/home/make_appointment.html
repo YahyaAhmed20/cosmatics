@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<!-- templates/make_appointment.html -->
+<div class="col-lg-6 intro_col">
+    <div class="intro_form_container">
+        <div class="intro_form_title">Make an Appointment</div>
+        <form method="post" class="intro_form">
+            {% csrf_token %}
+            <div class="d-flex flex-row align-items-start justify-content-between flex-wrap">
+                {{ form.full_name }}
+                {{ form.email }}
+                {{ form.phone }}
+                {{ form.specialty }}
+                {{ form.doctor }}
+                {{ form.appointment_date }}
+            </div>
+            <button type="submit" class="button button_1 intro_button trans_200">Make an Appointment</button>
+        </form>
+    </div>
+</div>
+{% endblock body %}

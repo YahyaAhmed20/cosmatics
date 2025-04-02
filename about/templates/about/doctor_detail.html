@@ -1,0 +1,57 @@
+<!-- about/doctor_profile.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<div class="doctor-profile py-5 mt-5"> <!-- أضفت mt-5 هنا -->
+    <div class="container">
+        <div class="row align-items-start">
+            <!-- Doctor Image -->
+            <div class="col-lg-4 col-md-5 order-1 order-lg-1">
+                <div class="doctor-image">
+                    <img src="{{ doctor.image.url }}" alt="{{ doctor.name }}" class="img-fluid rounded shadow-sm" style="max-height: 300px; object-fit: cover;">
+                </div>
+            </div>
+            <!-- Doctor Details -->
+            <div class="col-lg-8 col-md-7 order-2 order-lg-2">
+                <div class="doctor-details p-4 bg-light rounded shadow-sm">
+                    <h2 class="mb-3 text-primary">{{ doctor.name }}</h2>
+                    <p class="mb-2"><strong class="text-muted">Title:</strong> {{ doctor.title }}</p>
+                    <p class="mb-2"><strong class="text-muted">Qualifications:</strong> {{ doctor.qualifications|default:"Not specified" }}</p>
+                    <p class="mb-2"><strong class="text-muted">Working Hours:</strong> {{ doctor.working_hours|default:"Not available" }}</p>
+                    <p class="mb-4"><strong class="text-muted">Location:</strong> {{ doctor.location|default:"Not provided" }}</p>
+                    {% comment %} <a href="" class="btn btn-primary px-4 py-2">Book Appointment</a> {% endcomment %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .doctor-profile {
+        background-color: #f8f9fa;
+        padding-top: 100px; /* زود المسافة من فوق */
+        background-color: #f8f9fa;
+    }
+    .doctor-details {
+        border-left: 4px solid #007bff;
+    }
+    .doctor-details h2 {
+        font-size: 2rem;
+        font-weight: 600;
+    }
+    .doctor-details p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+    .btn-primary {
+        transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+    .doctor-image {
+        text-align: left; /* الصورة على الشمال */
+    }
+</style>
+{% endblock %}

@@ -1,46 +1,56 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block body %}
+
+<!-- Home Slider -->
 <div class="home">
-    <!-- Home Slider -->
     <div class="home_slider_container">
         <div class="owl-carousel owl-theme home_slider">
-            <!-- Slide -->
-            <div class="owl-item">
-                <div class="background_image" style="background-image:url({% static 'images/home_slider.jpg' %})"></div>
-                <div class="home_container">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <div class="home_content">
-                                    <div class="home_subtitle">#1 Plastic Surgery Clinic</div>
-                                    <div class="home_title">Love the new you</div>
-                                    <div class="home_text">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus.</p>
-                                    </div>
-                                    <div class="home_buttons d-flex flex-row align-items-center justify-content-start">
-                                        <div class="button button_1 trans_200"><a href="#">read more</a></div>
-                                        <div class="button button_2 trans_200"><a href="#">make an appointment</a></div>
+            {% for slide in slides %}
+                <div class="owl-item">
+                    <div class="background_image" style="background-image: url({{ slide.image.url }})"></div>
+                    <div class="home_container">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="home_content">
+                                        <div class="home_subtitle">{{ slide.subtitle }}</div>
+                                        <div class="home_title">{{ slide.title }}</div>
+                                        <div class="home_text">
+                                            <p>{{ slide.description }}</p>
+                                        </div>
+                                        <div class="home_buttons d-flex flex-row align-items-center justify-content-start">
+                                            {% if slide.button_1_text and slide.button_1_link %}
+                                                <div class="button button_1 trans_200">
+                                                    <a href="{{ slide.button_1_link }}">{{ slide.button_1_text }}</a>
+                                                </div>
+                                            {% endif %}
+                                            {% if slide.button_2_text and slide.button_2_link %}
+                                                <div class="button button_2 trans_200">
+                                                    <a href="{{ slide.button_2_link }}">{{ slide.button_2_text }}</a>
+                                                </div>
+                                            {% endif %}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- Repeat for other slides -->
+            {% endfor %}
         </div>
         <!-- Home Slider Dots -->
         <div class="home_slider_dots">
             <ul id="home_slider_custom_dots" class="home_slider_custom_dots d-flex flex-row align-items-center justify-content-start">
-                <li class="home_slider_custom_dot trans_200 active"></li>
-                <li class="home_slider_custom_dot trans_200"></li>
-                <li class="home_slider_custom_dot trans_200"></li>
+                {% for slide in slides %}
+                    <li class="home_slider_custom_dot trans_200 {% if forloop.first %}active{% endif %}"></li>
+                {% endfor %}
             </ul>
         </div>
     </div>
 </div>
-<!-- Intro -->
+
+<!-- Intro Section -->
 <div class="intro">
     <div class="container">
         <div class="row">
@@ -52,89 +62,120 @@
                         <div class="section_title"><h2>Welcome to our Clinic</h2></div>
                     </div>
                     <div class="intro_text">
-                        <p>Integer aliquet congue libero, eu gravida odio ultrices ut. Etiam ac erat ut enim maximus accumsan vel ac nisl. Duis feugiat bibendum orci, non elementum urna vestibulum in. Nulla facilisi. Nulla egestas vel lacus sed interdum. Sed mollis, orci elementum eleifend tempor, nunc libero porttitor tellus, vel pharetra metus dolor.</p>
+                        <p>Integer aliquet congue libero, eu gravida odio ultrices ut. Etiam ac erat ut enim maximus accumsan vel ac nisl. Duis feugiat bibendum orci, non elementum urna vestibulum in.</p>
                     </div>
+                    <!-- Milestones -->
                     <div class="milestones">
                         <div class="row milestones_row">
-                            <!-- Milestone -->
                             <div class="col-md-4 milestone_col">
                                 <div class="milestone">
                                     <div class="milestone_counter" data-end-value="5000" data-sign-before="+">0</div>
                                     <div class="milestone_text">Satisfied Patients</div>
                                 </div>
                             </div>
-                            <!-- Repeat for other milestones -->
+                            <div class="col-md-4 milestone_col">
+                                <div class="milestone">
+                                    <div class="milestone_counter" data-end-value="1000" data-sign-before="+">0</div>
+                                    <div class="milestone_text">Successful Surgeries</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 milestone_col">
+                                <div class="milestone">
+                                    <div class="milestone_counter" data-end-value="200" data-sign-before="+">0</div>
+                                    <div class="milestone_text">Certified Doctors</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Intro Form -->
+            {% comment %} <!-- Intro Form -->
             <div class="col-lg-6 intro_col">
                 <div class="intro_form_container">
                     <div class="intro_form_title">Make an Appointment</div>
-                    <form action="#" class="intro_form" id="intro_form">
+                    <form method="post" class="intro_form" id="intro_form">
+                        {% csrf_token %}
                         <div class="d-flex flex-row align-items-start justify-content-between flex-wrap">
-                            <input type="text" class="intro_input" placeholder="Your Name" required="required">
-                            <input type="email" class="intro_input" placeholder="Your E-mail" required="required">
-                            <input type="tel" class="intro_input" placeholder="Your Phone" required="required">
-                            <select class="intro_select intro_input" required>
-                                <option disabled="" selected="" value="">Speciality</option>
-                                <option>Speciality 1</option>
-                                <option>Speciality 2</option>
-                                <option>Speciality 3</option>
-                                <option>Speciality 4</option>
-                                <option>Speciality 5</option>
-                            </select>
-                            <select class="intro_select intro_input" required="required">
-                                <option disabled="" selected="" value="">Doctor</option>
-                                <option>Doctor 1</option>
-                                <option>Doctor 2</option>
-                                <option>Doctor 3</option>
-                                <option>Doctor 4</option>
-                                <option>Doctor 5</option>
-                            </select>
-                            <input type="text" id="datepicker" class="intro_input datepicker" placeholder="Date" required="required">
+                            <div class="form-group">
+                                {{ form.full_name }}
+                                {% if form.full_name.errors %}
+                                    <small class="text-danger">{{ form.full_name.errors }}</small>
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                {{ form.email }}
+                                {% if form.email.errors %}
+                                    <small class="text-danger">{{ form.email.errors }}</small>
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                {{ form.phone }}
+                                {% if form.phone.errors %}
+                                    <small class="text-danger">{{ form.phone.errors }}</small>
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                {{ form.specialty }}
+                                {% if form.specialty.errors %}
+                                    <small class="text-danger">{{ form.specialty.errors }}</small>
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                {{ form.doctor }}
+                                {% if form.doctor.errors %}
+                                    <small class="text-danger">{{ form.doctor.errors }}</small>
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                {{ form.appointment_date }}
+                                {% if form.appointment_date.errors %}
+                                    <small class="text-danger">{{ form.appointment_date.errors }}</small>
+                                {% endif %}
+                            </div>
                         </div>
-                        <button class="button button_1 intro_button trans_200">make an appointment</button>
+                        <button type="submit" class="button button_1 trans_200">Make an Appointment</button>
                     </form>
                 </div>
-            </div>
+            </div> {% endcomment %}
         </div>
     </div>
 </div>
-<!-- Why Choose Us -->
+
+<!-- Why Choose Us Section -->
 <div class="why">
     <div class="container">
         <div class="row row-eq-height">
             <!-- Why Choose Us Image -->
             <div class="col-lg-6 order-lg-1 order-2">
                 <div class="why_image_container">
-                    <div class="why_image"><img src="{% static 'images/why_1.jpg' %}" alt=""></div>
+                    <div class="why_image">
+                        <img src="{{ why_choose_us.image.url }}" alt="{{ why_choose_us.title }}">
+                    </div>
                 </div>
             </div>
             <!-- Why Choose Us Content -->
             <div class="col-lg-6 order-lg-2 order-1">
                 <div class="why_content">
                     <div class="section_title_container">
-                        <div class="section_subtitle">This is Dr Pro</div>
-                        <div class="section_title"><h2>Why choose us?</h2></div>
+                        <div class="section_subtitle">{{ why_choose_us.subtitle }}</div>
+                        <div class="section_title"><h2>{{ why_choose_us.title }}</h2></div>
                     </div>
                     <div class="why_text">
-                        <p>Odio ultrices ut. Etiam ac erat ut enim maximus accumsan vel ac nisl. Duis feugiat bibendum orci, non elementum urna vestibulum in. Nulla facilisi. Nulla egestas vel lacus sed interdum. Sed mollis, orci elementum eleifend tempor, nunc libero porttitor tellus, vel pharetra metus dolor.</p>
+                        <p>{{ why_choose_us.description }}</p>
                     </div>
                     <div class="why_list">
                         <ul>
-                            <!-- Why List Item -->
-                            <li class="d-flex flex-row align-items-center justify-content-start">
-                                <div class="icon_container d-flex flex-column align-items-center justify-content-center">
-                                    <div class="icon"><img src="{% static 'images/icon_1.svg' %}" alt="https://www.flaticon.com/authors/prosymbols"></div>
-                                </div>
-                                <div class="why_list_content">
-                                    <div class="why_list_title">Only Top Products</div>
-                                    <div class="why_list_text">Etiam ac erat ut enim maximus accumsan vel ac nisl</div>
-                                </div>
-                            </li>
-                            <!-- Repeat for other list items -->
+                            {% for item in why_choose_us.items.all %}
+                                <li class="d-flex flex-row align-items-center justify-content-start">
+                                    <div class="icon_container d-flex flex-column align-items-center justify-content-center">
+                                        <div class="icon"><img src="{{ item.icon.url }}" alt="{{ item.title }}"></div>
+                                    </div>
+                                    <div class="why_list_content">
+                                        <div class="why_list_title">{{ item.title }}</div>
+                                        <div class="why_list_text">{{ item.description }}</div>
+                                    </div>
+                                </li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
@@ -142,6 +183,7 @@
         </div>
     </div>
 </div>
+
 <!-- Call to Action -->
 <div class="cta">
     <div class="container">
@@ -158,7 +200,8 @@
         </div>
     </div>
 </div>
-<!-- Services -->
+
+<!-- Services Section -->
 <div class="services">
     <div class="container">
         <div class="row">
@@ -170,45 +213,164 @@
             </div>
         </div>
         <div class="row services_row">
-            <!-- Service -->
-            <div class="col-xl-4 col-md-6 service_col">
-                <div class="service text-center">
-                    <div class="service">
-                        <div class="icon_container d-flex flex-column align-items-center justify-content-center ml-auto mr-auto">
-                            <div class="icon"><img src="{% static 'images/icon_4.svg' %}" alt="https://www.flaticon.com/authors/prosymbols"></div>
+            {% for service in service %}
+                <div class="col-xl-4 col-md-6 service_col">
+                    <div class="service text-center shadow rounded p-4 mb-4 hover-effect">
+                        <div class="icon_container mb-4">
+                            <div class="icon-hexagon">
+                                <img src="{{ service.icon.url }}" alt="{{ service.name }}" class="icon-img">
+                            </div>
                         </div>
-                        <div class="service_title">Breast Augmentation</div>
-                        <div class="service_text">
-                            <p>Odio ultrices ut. Etiam ac erat ut enim maximus accumsan vel ac nisl. Duis feugiat bibendum orci, non elementum urna.</p>
+                        <div class="service_title mb-3 fw-bold">{{ service.name }}</div>
+                        <div class="service_text mb-3">
+                            <p>{{ service.description }}</p>
+                        </div>
+                        <div class="service_price mb-3 text-primary fw-bold">${{ service.price }}</div>
+                        <div class="button_container">
+                            <a href="{% url 'services:order_summary' service.id %}" class="button button_1 intro_button trans_200">Book Now</a>
                         </div>
                     </div>
                 </div>
+            {% endfor %}
+        </div>
+        <!-- More Services Button -->
+        <div class="row my-4">
+            <div class="col text-center">
+                <a href="{% url 'services:services' %}" class="button button_1 intro_button trans_200">MORE SERVICES</a>
             </div>
-            <!-- Repeat for other services -->
         </div>
     </div>
 </div>
-<!-- Extra -->
+
+<style>
+/* أنماط لتحسين شكل الخدمات والأيقونات */
+.service {
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+    background-color: white;
+}
+
+.hover-effect:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+
+/* تصميم جديد للأيقونات */
+.icon_container {
+    position: relative;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-hexagon {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    position: relative;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    transform: rotate(45deg);
+    box-shadow: 0 5px 15px rgba(37, 117, 252, 0.3);
+    transition: all 0.4s ease;
+}
+
+.icon-hexagon:before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, #2575fc 0%, #6a11cb 100%);
+    z-index: -1;
+    border-radius: 17px;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.service:hover .icon-hexagon {
+    transform: rotate(135deg);
+}
+
+.service:hover .icon-hexagon:before {
+    opacity: 1;
+}
+
+.icon-img {
+    max-width: 50px;
+    max-height: 50px;
+    filter: brightness(0) invert(1);
+    transform: rotate(-45deg);
+    transition: all 0.4s ease;
+}
+
+.service:hover .icon-img {
+    transform: rotate(-135deg);
+}
+
+.service_title {
+    font-size: 1.25rem;
+    color: #333;
+}
+
+.service_price {
+    font-size: 1.5rem;
+}
+
+.shadow {
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.button_1 {
+    padding: 10px 25px;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.button_1:hover {
+    background: linear-gradient(135deg, #5a0eb0 0%, #1e65d8 100%);
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(37, 117, 252, 0.3);
+}
+</style>
+
+<!-- Extra Section -->
+{% if discount_offer %}
 <div class="extra">
-    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/extra.jpg' %}" data-speed="0.8"></div>
+    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{{ discount_offer.image.url }}" data-speed="0.8"></div>
     <div class="container">
         <div class="row">
             <div class="col">
                 <div class="extra_container d-flex flex-row align-items-start justify-content-end">
                     <div class="extra_content">
                         <div class="extra_disc d-flex flex-row align-items-end justify-content-start">
-                            <div>30<span>%</span></div>
+                            <div>{{ discount_offer.discount_percentage }}<span>%</span></div>
                             <div>Discount</div>
                         </div>
-                        <div class="extra_title">Only in August</div>
+                        <div class="extra_title">{{ discount_offer.title }}</div>
                         <div class="extra_text">
-                            <p>Nulla facilisi. Nulla egestas vel lacus sed interdum. Sed mollis, orci elementum eleifend tempor, nunc libero porttitor tellus.</p>
+                            <p>{{ discount_offer.description }}</p>
                         </div>
-                        <div class="button button_1 extra_link trans_200"><a href="#">read more</a></div>
+                        <div class="button button_1 extra_link trans_200">
+                            <a href="{{ discount_offer.link }}">read more</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+{% endif %}
+
 {% endblock body %}

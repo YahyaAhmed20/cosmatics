@@ -33,100 +33,141 @@
                 </div>
             </div>
             <div class="row services_row">
-                
-                <!-- Service -->
-                <div class="col-xl-4 col-md-6 service_col">
-                    <div class="service text-center">
-                        <div class="service">
-                            <div class="icon_container d-flex flex-column align-items-center justify-content-center ml-auto mr-auto">
-                                <div class="icon"><img src="{% static 'images/icon_4.svg' %}" alt="https://www.flaticon.com/authors/prosymbols"></div>
+                {% for service in service %}
+                    <div class="col-xl-4 col-md-6 service_col">
+                        <div class="service text-center shadow rounded p-4 mb-4 hover-effect">
+                            <div class="icon_container mb-4">
+                                <div class="icon-hexagon">
+                                    <img src="{{ service.icon.url }}" alt="{{ service.name }}" class="icon-img">
+                                </div>
                             </div>
-                            <div class="service_title">Breast Augmentation</div>
-                            <div class="service_text">
-                                <p>Odio ultrices ut. Etiam ac erat ut enim maximus accumsan vel ac nisl. Duis feugiat bibendum orci, non elementum urna.</p>
+                            <div class="service_title mb-3 fw-bold">{{ service.name }}</div>
+                            <div class="service_text mb-3">
+                                <p>{{ service.description }}</p>
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Repeat for other services, updating the image paths similarly -->
-                <div class="col-xl-4 col-md-6 service_col">
-                    <div class="service text-center">
-                        <div class="service">
-                            <div class="icon_container d-flex flex-column align-items-center justify-content-center ml-auto mr-auto">
-                                <div class="icon"><img src="{% static 'images/icon_5.svg' %}" alt="https://www.flaticon.com/authors/prosymbols"></div>
-                            </div>
-                            <div class="service_title">Breast Augmentation</div>
-                            <div class="service_text">
-                                <p>Odio ultrices ut. Etiam ac erat ut enim maximus accumsan vel ac nisl. Duis feugiat bibendum orci, non elementum urna.</p>
+                            <div class="service_price mb-3 text-primary fw-bold">${{ service.price }}</div>
+                            <div class="button_container">
+                                <a href="{% url 'services:order_summary' service.id %}" class="button button_1 intro_button trans_200">Book Now</a>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-xl-4 col-md-6 service_col">
-                    <div class="service text-center">
-                        <div class="service">
-                            <div class="icon_container d-flex flex-column align-items-center justify-content-center ml-auto mr-auto">
-                                <div class="icon"><img src="{% static 'images/icon_6.svg' %}" alt="https://www.flaticon.com/authors/prosymbols"></div>
-                            </div>
-                            <div class="service_title">Breast Augmentation</div>
-                            <div class="service_text">
-                                <p>Odio ultrices ut. Etiam ac erat ut enim maximus accumsan vel ac nisl. Duis feugiat bibendum orci, non elementum urna.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xl-4 col-md-6 service_col">
-                    <div class="service text-center">
-                        <div class="service">
-                            <div class="icon_container d-flex flex-column align-items-center justify-content-center ml-auto mr-auto">
-                                <div class="icon"><img src="{% static 'images/icon_7.svg' %}" alt="https://www.flaticon.com/authors/prosymbols"></div>
-                            </div>
-                            <div class="service_title">Breast Augmentation</div>
-                            <div class="service_text">
-                                <p>Odio ultrices ut. Etiam ac erat ut enim maximus accumsan vel ac nisl. Duis feugiat bibendum orci, non elementum urna.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xl-4 col-md-6 service_col">
-                    <div class="service text-center">
-                        <div class="service">
-                            <div class="icon_container d-flex flex-column align-items-center justify-content-center ml-auto mr-auto">
-                                <div class="icon"><img src="{% static 'images/icon_8.svg' %}" alt="https://www.flaticon.com/authors/prosymbols"></div>
-                            </div>
-                            <div class="service_title">Breast Augmentation</div>
-                            <div class="service_text">
-                                <p>Odio ultrices ut. Etiam ac erat ut enim maximus accumsan vel ac nisl. Duis feugiat bibendum orci, non elementum urna.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xl-4 col-md-6 service_col">
-                    <div class="service text-center">
-                        <div class="service">
-                            <div class="icon_container d-flex flex-column align-items-center justify-content-center ml-auto mr-auto">
-                                <div class="icon"><img src="{% static 'images/icon_3.svg' %}" alt="https://www.flaticon.com/authors/prosymbols"></div>
-                            </div>
-                            <div class="service_title">Breast Augmentation</div>
-                            <div class="service_text">
-                                <p>Odio ultrices ut. Etiam ac erat ut enim maximus accumsan vel ac nisl. Duis feugiat bibendum orci, non elementum urna.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                {% endfor %}
+            </div>
+            <!-- More Services Button -->
+            <div class="row my-4">
+                {% comment %} <div class="col text-center">
+                    <a href="{% url 'services:services' %}" class="button button_1 intro_button trans_200">MORE SERVICES</a>
+                </div> {% endcomment %}
             </div>
         </div>
     </div>
+    
+    <style>
+    /* أنماط لتحسين شكل الخدمات والأيقونات */
+    .service {
+        transition: all 0.3s ease;
+        border: 1px solid #f0f0f0;
+        background-color: white;
+    }
+    
+    .hover-effect:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    }
+    
+    /* تصميم جديد للأيقونات */
+    .icon_container {
+        position: relative;
+        height: 110px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .icon-hexagon {
+        width: 90px;
+        height: 90px;
+        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        position: relative;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        transform: rotate(45deg);
+        box-shadow: 0 5px 15px rgba(37, 117, 252, 0.3);
+        transition: all 0.4s ease;
+    }
+    
+    .icon-hexagon:before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(135deg, #2575fc 0%, #6a11cb 100%);
+        z-index: -1;
+        border-radius: 17px;
+        opacity: 0;
+        transition: all 0.4s ease;
+    }
+    
+    .service:hover .icon-hexagon {
+        transform: rotate(135deg);
+    }
+    
+    .service:hover .icon-hexagon:before {
+        opacity: 1;
+    }
+    
+    .icon-img {
+        max-width: 50px;
+        max-height: 50px;
+        filter: brightness(0) invert(1);
+        transform: rotate(-45deg);
+        transition: all 0.4s ease;
+    }
+    
+    .service:hover .icon-img {
+        transform: rotate(-135deg);
+    }
+    
+    .service_title {
+        font-size: 1.25rem;
+        color: #333;
+    }
+    
+    .service_price {
+        font-size: 1.5rem;
+    }
+    
+    .shadow {
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+    
+    .button_1 {
+        padding: 10px 25px;
+        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        color: white;
+        border: none;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: bold;
+        display: inline-block;
+        transition: all 0.3s ease;
+    }
+    
+    .button_1:hover {
+        background: linear-gradient(135deg, #5a0eb0 0%, #1e65d8 100%);
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(37, 117, 252, 0.3);
+    }
+    </style>
 
     <!-- Before and After -->
 
-    <div class="before_and_after">
+    {% comment %} <div class="before_and_after">
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -153,83 +194,69 @@
                     </div>
                     <div class="ba_text text-center"><p>Nulla facilisi. Nulla egestas vel lacus sed interdum. Sed mollis, orci elementum eleifend tempor, nunc libero porttitor tellus.</p></div>
                     <div class="ba_button_container text-center">
-                        <div class="button button_1 ba_button"><a href="#">see gallery</a></div>
+                        <div class="button button_1 ba_button">        <a href="{% url 'services:before_after_gallery' %}">See Gallery</a>
+                        </div>
                     </div>
                     
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Prices -->
-
-    <div class="prices">
-        <div class="container">
-            <div class="row">
-                
-                <!-- Price -->
-                <div class="col-lg-6 price_col">
-                    <div class="price">
-                        <div class="price_title">Breast Augmentation</div>
-                        <div class="price_text">
-                            <p>Integer aliquet congue libero, eu gravida odio ultrces ut. Etiam ac erat ut enim maximus accumsan vel ac nisl.</p>
+    </div> {% endcomment %}
+<!-- Why Choose Our Services -->
+<div class="why_choose_us py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <div class="section_title_container">
+                    <div class="section_subtitle">This is Dr Pro</div>
+                    <div class="section_title"><h2>Why Choose Us</h2></div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-4 mb-4">
+                <div class="service text-center shadow rounded p-4 mb-4 hover-effect">
+                    <div class="icon_container mb-4">
+                        <div class="icon-hexagon">
+                            <i class="fas fa-user-md icon-img"></i>
                         </div>
-                        <div class="price_panel">From $3500</div>
+                    </div>
+                    <div class="service_title mb-3 fw-bold">Expert Team</div>
+                    <div class="service_text mb-3">
+                        <p>Our highly qualified professionals bring years of experience to ensure the highest quality of care for all our patients.</p>
                     </div>
                 </div>
-
-                <!-- Repeat for other prices -->
-                <div class="col-lg-6 price_col">
-                    <div class="price">
-                        <div class="price_title">Otoplasty</div>
-                        <div class="price_text">
-                            <p>Integer aliquet congue libero, eu gravida odio ultrces ut. Etiam ac erat ut enim maximus accumsan vel ac nisl.</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="service text-center shadow rounded p-4 mb-4 hover-effect">
+                    <div class="icon_container mb-4">
+                        <div class="icon-hexagon">
+                            <i class="fas fa-microscope icon-img"></i>
                         </div>
-                        <div class="price_panel">From $2000</div>
+                    </div>
+                    <div class="service_title mb-3 fw-bold">Advanced Technology</div>
+                    <div class="service_text mb-3">
+                        <p>We utilize the latest medical equipment and technologies to deliver precise diagnoses and effective treatments.</p>
                     </div>
                 </div>
-
-                <div class="col-lg-6 price_col">
-                    <div class="price">
-                        <div class="price_title">Eyelid Surgery</div>
-                        <div class="price_text">
-                            <p>Integer aliquet congue libero, eu gravida odio ultrces ut. Etiam ac erat ut enim maximus accumsan vel ac nisl.</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="service text-center shadow rounded p-4 mb-4 hover-effect">
+                    <div class="icon_container mb-4">
+                        <div class="icon-hexagon">
+                            <i class="fas fa-heart icon-img"></i>
                         </div>
-                        <div class="price_panel">From $1500</div>
+                    </div>
+                    <div class="service_title mb-3 fw-bold">Personalized Care</div>
+                    <div class="service_text mb-3">
+                        <p>We believe in treating each patient with individual attention, creating custom care plans that address your specific needs.</p>
                     </div>
                 </div>
-
-                <div class="col-lg-6 price_col">
-                    <div class="price">
-                        <div class="price_title">Botox</div>
-                        <div class="price_text">
-                            <p>Integer aliquet congue libero, eu gravida odio ultrces ut. Etiam ac erat ut enim maximus accumsan vel ac nisl.</p>
-                        </div>
-                        <div class="price_panel">From $200</div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 price_col">
-                    <div class="price">
-                        <div class="price_title">Liposuction</div>
-                        <div class="price_text">
-                            <p>Integer aliquet congue libero, eu gravida odio ultrces ut. Etiam ac erat ut enim maximus accumsan vel ac nisl.</p>
-                        </div>
-                        <div class="price_panel">From $5500</div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 price_col">
-                    <div class="price">
-                        <div class="price_title">Hyaluronic Acid</div>
-                        <div class="price_text">
-                            <p>Integer aliquet congue libero, eu gravida odio ultrces ut. Etiam ac erat ut enim maximus accumsan vel ac nisl.</p>
-                        </div>
-                        <div class="price_panel">From $350</div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
+</div>
+
+
+
     {% endblock body %}

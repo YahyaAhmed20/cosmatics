@@ -1,15 +1,8 @@
-# home
-
-
-from django.urls import path
-
+from django.urls import path,include
 from . import views
 
-app_name = 'contact'
-
+app_name='contact'
 urlpatterns = [
-    path('', views.contact, name='contact'),
-   
-
-    
+    path('', views.send_text, name='send_text'),  # URL for the job list view
+  
 ]

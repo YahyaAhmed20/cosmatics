@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
+# import paypalrestsdk
+# import pyrebase
 
 from pathlib import Path
 import os
@@ -25,26 +27,52 @@ SECRET_KEY = 'django-insecure-be6-00md05vx(pj7h2*%zgx0n3g%pz^(+k&2cz1m!p9quo)78j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = []
 
 
-# Application definition
+
+
 
 INSTALLED_APPS = [
+    
+    'accounts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+
+
+    'allauth',
+    'allauth.account',
+
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    
+    'bootstrap4',
+    'crispy_forms',
+    'crispy_bootstrap5',
     
     # Apps
-    'home',
     'about',
+    'home',
     'services',
     'contact',
-    'accounts',
 ]
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+LOGIN_REDIRECT_URL = 'accounts:profile'  # تعديلها حسب المسار المناسب لديك
+LOGOUT_REDIRECT_URL = 'login'  # بعد تسجيل الخروج، يعيد التوجيه إلى صفحة تسجيل الدخول
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -52,6 +80,8 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'allauth.account.middleware.AccountMiddleware',  # أضف هذا السطر هنا
+
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -87,6 +117,10 @@ DATABASES = {
     }
 }
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -138,3 +172,55 @@ MEDIA_URL='/media/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_HOST_USER ='yahmdh6@gmail.com'
+EMAIL_HOST_PASSWORD='nzmcfxgowwjxlofn'
+EMAIL_USE_TLS =True
+EMAIL_PORT= 587
+
+
+
+
+# firebase_config = {
+#     "apiKey": "AIzaSyCVgQGPi89cbpxG6vJDSYur1dDXB0yzS6s",  # من الصورة
+#     "authDomain": "cosmatics-19440.firebaseapp.com",  # بناءً على Project ID
+#     "projectId": "cosmatics-19440",  # من الصورة
+#     "storageBucket": "cosmatics-19440.appspot.com",  # بناءً على Project ID
+#     "messagingSenderId": "1385422522312",  # من الصورة (Project number)
+#     "appId": "",  # هنجيبها لما نضيف Web App
+#     "databaseURL": ""  # اتركها فاضية لو مش بتستخدم Realtime Database
+# }
+
+# firebase = pyrebase.initialize_app(firebase_config)
+# auth = firebase.auth()
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': '667352803940-n2mr6khev2m13givg06tiq6ii1ob3pvf.apps.googleusercontent.com',
+            'secret': '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',
+            'key': ''
+        }
+    }
+}
+
+
+
+SITE_ID = 1
+
+
+
+# بهذه الإعدادات الجديدة:
+ACCOUNT_LOGIN_METHODS = {'email'}
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+
+# حافظ على بقية الإعدادات:
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+ACCOUNT_EMAIL_VERIFICATION = 'optional'
+SOCIALACCOUNT_LOGIN_ON_GET = True
