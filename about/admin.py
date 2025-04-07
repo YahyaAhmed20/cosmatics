@@ -24,8 +24,9 @@ class MilestoneAdmin(admin.ModelAdmin):
     
     
 
-@admin.register(TeamMember)
-class TeamMemberAdmin(admin.ModelAdmin):
-    list_display = ('name', 'title')
+# @admin.register(TeamMember)
+# class TeamMemberAdmin(admin.ModelAdmin):
+#     list_display = ('name', 'title')
+admin.site.register(TeamMember)
     
     

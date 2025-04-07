@@ -1,0 +1,258 @@
+# عنوان ت Descriptive بعض الشيء.
+# حقوق النشر (C) سنة حامل حقوق النشر للحزمة
+# يتم توزيع هذا الملف تحت نفس الترخيص مثل حزمة الحزمة.
+# المؤلف الأول <EMAIL@ADDRESS>، سنة.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: إصدار الحزمة\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-07 20:21+0200\n"
+"PO-Revision-Date: سنة-شهر-يوم ساعة:دقيقة+منطقة\n"
+"Last-Translator: الاسم الكامل <EMAIL@ADDRESS>\n"
+"Language-Team: اللغة <LL@li.org>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: .\about\templates\about\about.html:18
+msgid "About Us"
+msgstr "معلومات عنا"
+
+#: .\about\templates\about\about.html:35
+msgid "Why Choose Us"
+msgstr "لماذا تختارنا"
+
+#: .\about\templates\about\about.html:36
+msgid "We Are Your Best Choice"
+msgstr "نحن خيارك الأفضل"
+
+#: .\about\templates\about\about.html:41
+msgid ""
+"We are committed to providing the highest quality services and products to "
+"our customers."
+msgstr "نحن ملتزمون بتقديم أعلى جودة من الخدمات والمنتجات لعملائنا."
+
+#: .\about\templates\about\about.html:42
+msgid ""
+"Our team of experts is dedicated to ensuring your satisfaction and "
+"delivering exceptional results."
+msgstr "فريق الخبراء لدينا مكرس لضمان رضاك وتقديم نتائج استثنائية."
+
+#: .\about\templates\about\about.html:48
+msgid "High-quality products and services"
+msgstr "منتجات وخدمات ع personally عالية الجودة"
+
+#: .\about\templates\about\about.html:49
+msgid "Experienced and professional team"
+msgstr "فريق ذو خبرة ومحترف"
+
+#: .\about\templates\about\about.html:50
+msgid "Customer satisfaction guaranteed"
+msgstr "رضا العملاء مضمون"
+
+#: .\about\templates\about\about.html:51
+msgid "Competitive pricing and flexible plans"
+msgstr "أسعار تنافسية وخطط مرنة"
+
+#: .\about\templates\about\about.html:52
+msgid "Fast and reliable support"
+msgstr "دعم سريع وموثوق"
+
+#: .\about\templates\about\about.html:67
+msgid "Meet The Doctor"
+msgstr "تعرف على الطبيب"
+
+#: .\about\templates\about\about.html:79
+msgid "Consult your doctor"
+msgstr "استشر طبيبك"
+
+#: .\contact\templates\contact\contact.html:40 .\templates\parts\footer.html:88
+#: .\templates\parts\navbar.html:20
+msgid "Contact"
+msgstr "اتصل بنا"
+
+#: .\contact\templates\contact\contact.html:58
+msgid "Get in Touch"
+msgstr "تواصل معنا"
+
+#: .\contact\templates\contact\contact.html:68
+#: .\contact\templates\contact\contact.html:69
+msgid "Enter Your Subject"
+msgstr "أدخل موضوعك"
+
+#: .\contact\templates\contact\contact.html:76
+#: .\contact\templates\contact\contact.html:77
+msgid "Enter Your email"
+msgstr "أدخل بريدك الإلكتروني"
+
+#: .\contact\templates\contact\contact.html:84
+#: .\contact\templates\contact\contact.html:85
+msgid "Enter Your Message"
+msgstr "أدخل رسالتك"
+
+#: .\contact\templates\contact\contact.html:90
+msgid "Send Message"
+msgstr "أرسل الرسالة"
+
+#: .\home\models.py:6
+msgid "Title"
+msgstr "العنوان"
+
+#: .\home\models.py:7
+msgid "Subtitle"
+msgstr "العنوان الفرعي"
+
+#: .\home\models.py:8
+msgid "Description"
+msgstr "الوصف"
+
+#: .\home\models.py:9
+msgid "Image"
+msgstr "الصورة"
+
+#: .\home\models.py:10
+msgid "Is Active?"
+msgstr "هل هو نشط؟"
+
+#: .\home\models.py:16
+msgid "Slide"
+msgstr "شريحة"
+
+#: .\home\models.py:17
+msgid "Slides"
+msgstr "شرائح"
+
+#: .\home\templates\home\home.html:68
+msgid "Welcome to our Clinic"
+msgstr "مرحبًا بكم في عيادتنا"
+
+#: .\home\templates\home\home.html:75
+msgid ""
+"Enjoy a unique beauty experience in a warm and comfortable environment. Our "
+"team is dedicated to providing you with the best cosmetic solutions that "
+"enhance your beauty and give you a sense of satisfaction and confidence."
+msgstr ""
+"استمتع بتجربة جمال فريدة في بيئة دافئة ومريحة. فريقنا مكرس لتقديم أفضل "
+"الحلول التجميلية التي تعزز جمالك وتمنحك شعورًا بالرضا والثقة."
+
+#: .\home\templates\home\home.html:93
+msgid "Make your appointment today!"
+msgstr "احجز موعدك اليوم!"
+
+#: .\home\templates\home\home.html:99
+msgid "+972 50-453-8833"
+msgstr "+972 50-453-8833"
+
+#: .\home\templates\home\home.html:113
+#: .\services\templates\services\services.html:16
+#: .\services\templates\services\services.html:30
+#: .\templates\parts\footer.html:87 .\templates\parts\navbar.html:19
+msgid "Services"
+msgstr "الخدمات"
+
+#: .\home\templates\home\home.html:114
+#: .\services\templates\services\services.html:31
+msgid "Special Services"
+msgstr "خدمات خاصة"
+
+#: .\home\templates\home\home.html:133
+#: .\services\templates\services\services.html:50
+msgid "Book Now"
+msgstr "احجز الآن"
+
+#: .\home\templates\home\home.html:331
+msgid "Discount"
+msgstr "خصم"
+
+#: .\home\templates\home\home.html:331
+msgid "soon"
+msgstr "قريبًا"
+
+#: .\home\templates\home\home.html:333
+msgid "Special Offer"
+msgstr "عرض خاص"
+
+#: .\services\templates\services\order_summary.html:9
+msgid "Order Summary"
+msgstr "ملخص الطلب"
+
+#: .\services\templates\services\order_summary.html:14
+msgid "Service Details"
+msgstr "تفاصيل الخدمة"
+
+#: .\services\templates\services\order_summary.html:15
+msgid "Doctor Name"
+msgstr "اسم الطبيب"
+
+#: .\services\templates\services\order_summary.html:16
+msgid "Service Name"
+msgstr "اسم الخدمة"
+
+#: .\services\templates\services\order_summary.html:17
+msgid "Price"
+msgstr "السعر"
+
+#: .\services\templates\services\order_summary.html:18
+msgid "Total Price"
+msgstr "السعر الإجمالي"
+
+#: .\services\templates\services\order_summary.html:25
+msgid "Proceed to Checkout"
+msgstr "المتابعة إلى الدفع"
+
+#: .\services\templates\services\order_summary.html:27
+msgid "Back To Services"
+msgstr "العودة إلى الخدمات"
+
+#: .\templates\parts\footer.html:17
+msgid ""
+"A fully integrated cosmetic clinic offering the latest technologies in skin "
+"care, fillers, Botox, laser hair removal, and facial contouring. We care "
+"about your beauty and guarantee you the best results with the highest "
+"standards of safety and quality."
+msgstr ""
+"عيادة تجميلية مدمجة بالكامل تقدم أحدث التقنيات في العناية بالبشرة، الحشوات، "
+"البوتوكس، إزالة الشعر بالليزر، وتحديد ملامح الوجه. نحن نهتم بجمالك ونضمن لك "
+"أفضل النتائج مع أعلى معايير السلامة والجودة."
+
+#: .\templates\parts\footer.html:25
+
+msgid "Contact Info"
+msgstr "اتصل بنا"
+
+#: .\templates\parts\footer.html:48
+msgid "Our Location"
+msgstr "موقعنا"
+
+#: .\templates\parts\footer.html:62
+msgid "Follow Us"
+msgstr "تابعنا"
+
+#: .\templates\parts\footer.html:85 .\templates\parts\navbar.html:17
+msgid "Home"
+msgstr "الرئيسية"
+
+#: .\templates\parts\footer.html:86 .\templates\parts\navbar.html:18
+msgid "About us"
+msgstr "معلومات عنا"
+
+#: .\templates\parts\navbar.html:93
+msgid "Profile"
+msgstr "حساب تعريفي"
+
+#: .\templates\parts\navbar.html:100
+msgid "Logout"
+msgstr "تسجيل الخروج"
+
+#: .\templates\parts\navbar.html:107
+msgid "Log in"
+msgstr "تسجيل الدخول"
+
+#: .\templates\parts\navbar.html:108
+msgid "Sign Up"
+msgstr "تسجيل الخروج"

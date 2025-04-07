@@ -1,18 +1,19 @@
 {% extends 'base.html' %}
+
+{% load i18n %}
 {% load static %}
 {% block body %}
     <!-- Home -->
 
     <div class="home d-flex flex-column align-items-start justify-content-end">
-        <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/services.jpg' %}" data-speed="0.8"></div>
-        <div class="home_overlay"><img src="{% static 'images/home_overlay.png' %}" alt=""></div>
+        <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/yah.jpg' %}" data-speed="0.8"></div>
+        {% comment %} <div class="home_overlay"><img src="{% static 'images/home_overlay.png' %}" alt=""></div> {% endcomment %}
         <div class="home_container">
             <div class="container">
                 <div class="row">
                     <div class="col">
                         <div class="home_content">
-                            <div class="home_title">Services</div>
-                            <div class="home_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                            <div class="home_title">{% trans 'Services' %}</div>
                         </div>
                     </div>
                 </div>
@@ -21,24 +22,23 @@
     </div>
 
     <!-- Services -->
-
-    <div class="services">
+    <div class="services py-5">
         <div class="container">
             <div class="row">
                 <div class="col text-center">
-                    <div class="section_title_container">
-                        <div class="section_subtitle">This is Dr Pro</div>
-                        <div class="section_title"><h2>Our Services</h2></div>
+                    <div class="section_title_container mb-5">
+                        <div class="section_subtitle text-primary mb-2">{% trans 'Services'%}</div>
+                        <div class="section_title"><h2>{% trans 'Special Services'%}</h2></div>
                     </div>
                 </div>
             </div>
             <div class="row services_row">
                 {% for service in service %}
                     <div class="col-xl-4 col-md-6 service_col">
-                        <div class="service text-center shadow rounded p-4 mb-4 hover-effect">
-                            <div class="icon_container mb-4">
-                                <div class="icon-hexagon">
-                                    <img src="{{ service.icon.url }}" alt="{{ service.name }}" class="icon-img">
+                        <div class="service text-center shadow-lg rounded-lg p-4 mb-5 hover-effect">
+                            <div class="image_container mb-4">
+                                <div class="image_circle">
+                                    <img src="{{ service.icon.url }}" alt="{{ service.name }}" class="service-img">
                                 </div>
                             </div>
                             <div class="service_title mb-3 fw-bold">{{ service.name }}</div>
@@ -47,107 +47,160 @@
                             </div>
                             <div class="service_price mb-3 text-primary fw-bold">${{ service.price }}</div>
                             <div class="button_container">
-                                <a href="{% url 'services:order_summary' service.id %}" class="button button_1 intro_button trans_200">Book Now</a>
+                                <a href="{% url 'services:order_summary' service.id %}" class="button button_1 intro_button trans_200"> {% trans 'Book Now' %}</a>
                             </div>
                         </div>
                     </div>
                 {% endfor %}
             </div>
-            <!-- More Services Button -->
-            <div class="row my-4">
-                {% comment %} <div class="col text-center">
-                    <a href="{% url 'services:services' %}" class="button button_1 intro_button trans_200">MORE SERVICES</a>
-                </div> {% endcomment %}
-            </div>
         </div>
     </div>
-    
     <style>
-    /* أنماط لتحسين شكل الخدمات والأيقونات */
-    .service {
-        transition: all 0.3s ease;
-        border: 1px solid #f0f0f0;
-        background-color: white;
+    /* أنماط لتحسين شكل الخدمات والصور */
+    .services {
+        background-color: #f9fbff;
     }
-    
-    .hover-effect:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    .section_subtitle {
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 600;
     }
-    
-    /* تصميم جديد للأيقونات */
-    .icon_container {
+    .section_title h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
         position: relative;
-        height: 110px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display: inline-block;
+        margin-bottom: 15px;
     }
-    
-    .icon-hexagon {
-        width: 90px;
-        height: 90px;
-        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-        position: relative;
-        border-radius: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto;
-        transform: rotate(45deg);
-        box-shadow: 0 5px 15px rgba(37, 117, 252, 0.3);
-        transition: all 0.4s ease;
-    }
-    
-    .icon-hexagon:before {
+    .section_title h2:after {
         content: '';
         position: absolute;
-        top: -2px;
-        left: -2px;
-        right: -2px;
-        bottom: -2px;
-        background: linear-gradient(135deg, #2575fc 0%, #6a11cb 100%);
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 3px;
+        background: linear-gradient(90deg, #6a11cb, #2575fc);
+        border-radius: 10px;
+    }
+    .service {
+        transition: all 0.4s ease;
+        border: none;
+        background-color: white;
+        height: 100%;
+        position: relative;
+        z-index: 1;
+        border-radius: 15px;
+        overflow: hidden;
+    }
+    .service:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, #6a11cb, #2575fc);
         z-index: -1;
-        border-radius: 17px;
         opacity: 0;
         transition: all 0.4s ease;
     }
-    
-    .service:hover .icon-hexagon {
-        transform: rotate(135deg);
-    }
-    
-    .service:hover .icon-hexagon:before {
+    .service:hover:before {
         opacity: 1;
     }
-    
-    .icon-img {
-        max-width: 50px;
-        max-height: 50px;
-        filter: brightness(0) invert(1);
-        transform: rotate(-45deg);
-        transition: all 0.4s ease;
+    .hover-effect:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.15) !important;
     }
-    
-    .service:hover .icon-img {
-        transform: rotate(-135deg);
+    /* تصميم جديد للصور - طريقة Circle Image مع تأثيرات ومسافة أكبر */
+    .image_container {
+        position: relative;
+        height: 220px; /* زيادة الارتفاع لإبعاد الصورة */
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 0; /* إضافة مسافة حول الصورة */
     }
-    
+    .image_circle {
+        width: 200px; /* تقليل حجم الدائرة قليلاً */
+        height: 250px;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 0 10px 25px rgba(37, 117, 252, 0.2);
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        transition: all 0.5s ease;
+        border: 5px solid rgba(255, 255, 255, 0.9);
+    }
+    .image_circle:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+        z-index: 1;
+        opacity: 0;
+        transition: all 0.5s ease;
+    }
+    .service:hover .image_circle:before {
+        opacity: 1;
+    }
+    .service:hover .image_circle {
+        box-shadow: 0 15px 35px rgba(37, 117, 252, 0.4);
+        transform: scale(1.05);
+    }
+    .service-img {
+        width: 85%; /* تقليل حجم الصورة داخل الدائرة */
+        height: 85%;
+        object-fit: contain; /* تغيير من cover إلى contain لإظهار الصورة كاملة */
+        transition: all 0.5s ease;
+        transform: scale(0.95);
+    }
+    .service:hover .service-img {
+        transform: scale(1);
+    }
+    /* باقي الأنماط */
     .service_title {
-        font-size: 1.25rem;
+        font-size: 1.4rem;
         color: #333;
+        position: relative;
+        padding-bottom: 12px;
+        margin-top: 10px; /* زيادة المسافة بين الصورة والعنوان */
     }
-    
+    .service_title:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 2px;
+        background: linear-gradient(90deg, #6a11cb, #2575fc);
+    }
+    .service_text {
+        color: #666;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
     .service_price {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
+        background: -webkit-linear-gradient(#6a11cb, #2575fc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
-    
-    .shadow {
-        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    .shadow-lg {
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
-    
+    .rounded-lg {
+        border-radius: 15px;
+    }
     .button_1 {
-        padding: 10px 25px;
+        padding: 12px 28px;
         background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
         color: white;
         border: none;
@@ -156,15 +209,29 @@
         font-weight: bold;
         display: inline-block;
         transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
     }
-    
-    .button_1:hover {
+    .button_1:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
         background: linear-gradient(135deg, #5a0eb0 0%, #1e65d8 100%);
-        transform: scale(1.05);
-        box-shadow: 0 5px 15px rgba(37, 117, 252, 0.3);
+        transition: all 0.4s ease;
+        z-index: -1;
+    }
+    .button_1:hover {
+        color: white;
+        box-shadow: 0 7px 15px rgba(37, 117, 252, 0.4);
+    }
+    .button_1:hover:before {
+        width: 100%;
     }
     </style>
-
     <!-- Before and After -->
 
     {% comment %} <div class="before_and_after">
@@ -203,7 +270,7 @@
         </div>
     </div> {% endcomment %}
 <!-- Why Choose Our Services -->
-<div class="why_choose_us py-5">
+{% comment %} <div class="why_choose_us py-5">
     <div class="container">
         <div class="row">
             <div class="col text-center">
@@ -255,7 +322,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> {% endcomment %}
 
 
 

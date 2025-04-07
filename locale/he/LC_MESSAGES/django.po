@@ -1,0 +1,261 @@
+# כותרת תיאורית כלשהי.
+# זכויות יוצרים (C) שנת מחזיק זכויות היוצרים של החבילה
+# קובץ זה מופץ תחת אותה רישיון כמו חבילת החבילה.
+# מחבר ראשון <EMAIL@ADDRESS>, שנה.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: גרסת החבילה\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-07 20:21+0200\n"
+"PO-Revision-Date: שנה-חודש-יום שעה:דקה+אזור\n"
+"Last-Translator: שם מלא <EMAIL@ADDRESS>\n"
+"Language-Team: שפה <LL@li.org>\n"
+"Language: he\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % "
+"1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
+
+#: .\about\templates\about\about.html:18
+msgid "About Us"
+msgstr "אודותינו"
+
+#: .\about\templates\about\about.html:35
+msgid "Why Choose Us"
+msgstr "למה לבחור בנו"
+
+#: .\about\templates\about\about.html:36
+msgid "We Are Your Best Choice"
+msgstr "אנחנו הבחירה הטובה ביותר שלך"
+
+#: .\about\templates\about\about.html:41
+msgid ""
+"We are committed to providing the highest quality services and products to "
+"our customers."
+msgstr "אנו מחויבים לספק את השירותים והמוצרים האיכותיים ביותר ללקוחותינו."
+
+#: .\about\templates\about\about.html:42
+msgid ""
+"Our team of experts is dedicated to ensuring your satisfaction and "
+"delivering exceptional results."
+msgstr ""
+"צוות המומחים שלנו מחויב להבטיח את שביעות רצונך ולספק תוצאות יוצאות דופן."
+
+#: .\about\templates\about\about.html:48
+msgid "High-quality products and services"
+msgstr "מוצרים ושירותים באיכות גבוהה"
+
+#: .\about\templates\about\about.html:49
+msgid "Experienced and professional team"
+msgstr "צוות מנוסה ומקצועי"
+
+#: .\about\templates\about\about.html:50
+msgid "Customer satisfaction guaranteed"
+msgstr "שביעות רצון לקוחות מובטחת"
+
+#: .\about\templates\about\about.html:51
+msgid "Competitive pricing and flexible plans"
+msgstr "תמחור תחרותי ותוכניות גמישות"
+
+#: .\about\templates\about\about.html:52
+msgid "Fast and reliable support"
+msgstr "תמיכה מהירה ואמינה"
+
+#: .\about\templates\about\about.html:67
+msgid "Meet The Doctor"
+msgstr "פגוש את הרופא"
+
+#: .\about\templates\about\about.html:79
+msgid "Consult your doctor"
+msgstr "התייעץ עם הרופא שלך"
+
+#: .\contact\templates\contact\contact.html:40 .\templates\parts\footer.html:88
+#: .\templates\parts\navbar.html:20
+msgid "Contact"
+msgstr "צור קשר"
+
+#: .\contact\templates\contact\contact.html:58
+msgid "Get in Touch"
+msgstr "צור קשר"
+
+#: .\contact\templates\contact\contact.html:68
+#: .\contact\templates\contact\contact.html:69
+msgid "Enter Your Subject"
+msgstr "הזן את הנושא שלך"
+
+#: .\contact\templates\contact\contact.html:76
+#: .\contact\templates\contact\contact.html:77
+msgid "Enter Your email"
+msgstr "הזן את האימייל שלך"
+
+#: .\contact\templates\contact\contact.html:84
+#: .\contact\templates\contact\contact.html:85
+msgid "Enter Your Message"
+msgstr "הזן את ההודעה שלך"
+
+#: .\contact\templates\contact\contact.html:90
+msgid "Send Message"
+msgstr "שלח הודעה"
+
+#: .\home\models.py:6
+msgid "Title"
+msgstr "כותרת"
+
+#: .\home\models.py:7
+msgid "Subtitle"
+msgstr "כותרת משנה"
+
+#: .\home\models.py:8
+msgid "Description"
+msgstr "תיאור"
+
+#: .\home\models.py:9
+msgid "Image"
+msgstr "תמונה"
+
+#: .\home\models.py:10
+msgid "Is Active?"
+msgstr "פעיל?"
+
+#: .\home\models.py:16
+msgid "Slide"
+msgstr "שקופית"
+
+#: .\home\models.py:17
+msgid "Slides"
+msgstr "שקופיות"
+
+#: .\home\templates\home\home.html:68
+msgid "Welcome to our Clinic"
+msgstr "ברוכים הבאים למרפאה שלנו"
+
+#: .\home\templates\home\home.html:75
+msgid ""
+"Enjoy a unique beauty experience in a warm and comfortable environment. Our "
+"team is dedicated to providing you with the best cosmetic solutions that "
+"enhance your beauty and give you a sense of satisfaction and confidence."
+msgstr ""
+"תיהנו מחוויית יופי ייחודית בסביבה חמה ונוחה. הצוות שלנו מחויב לספק לכם את "
+"הפתרונות הקוסמטיים הטובים ביותר שמשפרים את יופייכם ומעניקים לכם תחושת סיפוק "
+"וביטחון."
+
+#: .\home\templates\home\home.html:93
+msgid "Make your appointment today!"
+msgstr "קבעו תור עוד היום!"
+
+#: .\home\templates\home\home.html:99
+msgid "+972 50-453-8833"
+msgstr "+972 50-453-8833"
+
+#: .\home\templates\home\home.html:113
+#: .\services\templates\services\services.html:16
+#: .\services\templates\services\services.html:30
+#: .\templates\parts\footer.html:87 .\templates\parts\navbar.html:19
+msgid "Services"
+msgstr "שירותים"
+
+#: .\home\templates\home\home.html:114
+#: .\services\templates\services\services.html:31
+msgid "Special Services"
+msgstr "שירותים מיוחדים"
+
+#: .\home\templates\home\home.html:133
+#: .\services\templates\services\services.html:50
+msgid "Book Now"
+msgstr "הזמן עכשיו"
+
+#: .\home\templates\home\home.html:331
+msgid "Discount"
+msgstr "הנחה"
+
+#: .\home\templates\home\home.html:331
+msgid "soon"
+msgstr "בקרוב"
+
+#: .\home\templates\home\home.html:333
+msgid "Special Offer"
+msgstr "הצעה מיוחדת"
+
+#: .\services\templates\services\order_summary.html:9
+msgid "Order Summary"
+msgstr "סיכום הזמנה"
+
+#: .\services\templates\services\order_summary.html:14
+msgid "Service Details"
+msgstr "פרטי השירות"
+
+#: .\services\templates\services\order_summary.html:15
+msgid "Doctor Name"
+msgstr "שם הרופא"
+
+#: .\services\templates\services\order_summary.html:16
+msgid "Service Name"
+msgstr "שם השירות"
+
+#: .\services\templates\services\order_summary.html:17
+msgid "Price"
+msgstr "מחיר"
+
+#: .\services\templates\services\order_summary.html:18
+msgid "Total Price"
+msgstr "מחיר כולל"
+
+#: .\services\templates\services\order_summary.html:25
+msgid "Proceed to Checkout"
+msgstr "המשך לתשלום"
+
+#: .\services\templates\services\order_summary.html:27
+msgid "Back To Services"
+msgstr "חזרה לשירותים"
+
+#: .\templates\parts\footer.html:17
+msgid ""
+"A fully integrated cosmetic clinic offering the latest technologies in skin "
+"care, fillers, Botox, laser hair removal, and facial contouring. We care "
+"about your beauty and guarantee you the best results with the highest "
+"standards of safety and quality."
+msgstr ""
+"מרפאה קוסמטית משולבת לחלוטין המציעה את הטכנולוגיות העדכניות ביותר בטיפוח "
+"העור, מילויים, בוטוקס, הסרת שיער בלייזר וקווי מתאר פנים. אנו דואגים ליופי "
+"שלכם ומבטיחים לכם את התוצאות הטובות ביותר עם הסטנדרטים הגבוהים ביותר של "
+"בטיחות ואיכות."
+
+#: .\templates\parts\footer.html:25
+
+msgid "Contact Info"
+msgstr "מידע ליצירת קשר"
+
+#: .\templates\parts\footer.html:48
+msgid "Our Location"
+msgstr "המיקום שלנו"
+
+#: .\templates\parts\footer.html:62
+msgid "Follow Us"
+msgstr "עקוב אחרינו"
+
+#: .\templates\parts\footer.html:85 .\templates\parts\navbar.html:17
+msgid "Home"
+msgstr "בית"
+
+#: .\templates\parts\footer.html:86 .\templates\parts\navbar.html:18
+msgid "About us"
+msgstr "אודותינו"
+
+#: .\templates\parts\navbar.html:93
+msgid "Profile"
+msgstr "פּרוֹפִיל"
+
+#: .\templates\parts\navbar.html:100
+msgid "Logout"
+msgstr "התנתק"
+
+#: .\templates\parts\navbar.html:107
+msgid "Log in"
+msgstr "התחבר"
+
+#: .\templates\parts\navbar.html:108
+msgid "Sign Up"
+msgstr "הירשם"

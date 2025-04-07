@@ -1,20 +1,20 @@
 # models.py
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 class Slide(models.Model):
-    title = models.CharField(max_length=255, verbose_name="العنوان")
-    subtitle = models.CharField(max_length=255, verbose_name="العنوان الفرعي")
-    description = models.TextField(verbose_name="الوصف")
-    image = models.ImageField(upload_to='slider_images/', verbose_name="الصورة")
-  
-    is_active = models.BooleanField(default=True, verbose_name="نشط؟")
+    title = models.CharField(max_length=255, verbose_name=_("Title"))
+    subtitle = models.CharField(max_length=255, verbose_name=_("Subtitle"))
+    description = models.TextField(verbose_name=_("Description"))
+    image = models.ImageField(upload_to='slider_images/', verbose_name=_("Image"))
+    is_active = models.BooleanField(default=True, verbose_name=_("Is Active?"))
 
     def __str__(self):
         return self.title
 
     class Meta:
-        verbose_name = "شريحة"
-        verbose_name_plural = "شرائح العرض"
+        verbose_name = _("Slide")
+        verbose_name_plural = _("Slides")
         
         
 class Specialty(models.Model):
@@ -68,6 +68,12 @@ class WhyChooseUsItem(models.Model):
     title = models.CharField(max_length=255, verbose_name="العنوان")
     description = models.TextField(verbose_name="الوصف")
 
+
+    def save(self, *args, **kwargs):
+        # Ensure only one record is active at a time
+        if self.is_active:
+            WhyChooseUs.objects.filter(is_active=True).update(is_active=False)
+        super().save(*args, **kwargs)
     def __str__(self):
         return self.title
 
@@ -79,7 +85,7 @@ class WhyChooseUsItem(models.Model):
 class Service(models.Model):
     name = models.CharField(max_length=255, verbose_name="اسم الخدمة")
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="السعر")
-    description = models.TextField(verbose_name="الوصف")
+    # description = models.TextField(verbose_name="الوصف")
     icon = models.ImageField(upload_to='service_icons/', verbose_name="الأيقونة")
     is_active = models.BooleanField(default=True, verbose_name="نشط؟")
 

@@ -1,11 +1,11 @@
 from django.shortcuts import render,get_object_or_404
 from home.models import Service
 from .models import SpecialService  # استيراد النموذج SpecialService
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
 # Create your views here.
-
 def services(request):
     
     service = Service.objects.filter(is_active=True)[:20]
@@ -16,6 +16,7 @@ def services(request):
 
 
 
+@login_required
 def order_summary(request, service_id):
     # جلب بيانات الخدمة باستخدام معرف الخدمة
     service = get_object_or_404(SpecialService, id=service_id)

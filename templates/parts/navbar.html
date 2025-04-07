@@ -1,26 +1,88 @@
+{% load static %}
+{% load i18n %}
 <header class="header trans_400">
     <div class="header_content d-flex flex-row align-items-center justify-content-between trans_400">
 
         <!-- Logo -->
         <div class="logo">
             <a href="/">
-                <div>Dr<span>PRO</span></div>
-                <div>Plastic Surgery</div>
+                <div>Natour<span> Clinic </span></div>
+                <div></div>
             </a>
         </div>
 
         <!-- Main Navigation -->
         <nav class="main_nav">
             <ul class="d-flex flex-row align-items-center">
-                <li {% if request.path == '/' or 'home' in request.path %} class="active" {% endif %}><a href="{% url 'home:home' %}">Home</a></li>
-                <li {% if 'about' in request.path %} class="active" {% endif %}><a href="{% url 'about:about' %}">About us</a></li>
-                <li {% if 'services' in request.path %} class="active" {% endif %}><a href="{% url 'services:services' %}">Services</a></li>
-                <li {% if 'contact' in request.path %} class="active" {% endif %}><a href="{% url 'contact:send_text' %}">Contact</a></li>
+                <li {% if request.path == '/' or 'home' in request.path %} class="active" {% endif %}><a href="{% url 'home:home' %}">{% trans 'Home' %}</a></li>
+                <li {% if 'about' in request.path %} class="active" {% endif %}><a href="{% url 'about:about' %}">{% trans 'About us' %}</a></li>
+                <li {% if 'services' in request.path %} class="active" {% endif %}><a href="{% url 'services:services' %}">{% trans 'Services' %}</a></li>
+                <li {% if 'contact' in request.path %} class="active" {% endif %}><a href="{% url 'contact:send_text' %}">{% trans 'Contact' %}</a></li>
             </ul>
- 
         </nav>
 
-        <div class="d-flex align-items-center ml-auto">
+        <div class="d-flex align-items-center ml-auto gap-3">
+            <!-- Language Selector -->
+            <form id="language-form" action="{% url 'set_language' %}" method="post" class="d-flex align-items-center">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.path }}">
+                
+                <!-- Language Dropdown -->
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        <!-- عرض العلم المختار في الـ navbar -->
+                        <span id="selected-language">
+                            {% if CURRENT_LANGUAGE == 'en' %}
+                                <img src="{% static 'images/english.jpg' %}" alt="English" class="flag-icon"> English
+                            {% elif CURRENT_LANGUAGE == 'ar' %}
+                                <img src="{% static 'images/arabic-flag.jpg' %}" alt="عربي" class="flag-icon"> عربي
+                            {% elif CURRENT_LANGUAGE == 'he' %}
+                                <img src="{% static 'images/hebrew-flag.jpg' %}" alt="עברית" class="flag-icon"> עברית
+                            {% endif %}
+                        </span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        {% get_available_languages as LANGUAGES %}
+                        {% for lang_code, lang_name in LANGUAGES %}
+                            <li>
+                                <a class="dropdown-item" href="#" onclick="changeLanguage('{{ lang_code }}')">
+                                    {% if lang_code == 'en' %}
+                                        <img src="{% static 'images/english.jpg' %}" alt="English" class="flag-icon"> English
+                                    {% elif lang_code == 'ar' %}
+                                        <img src="{% static 'images/WhatsApp Image 2025-04-06 at 23.15.31_035bf660.jpg' %}" alt="عربي" class="flag-icon"> عربي
+                                    {% elif lang_code == 'he' %}
+                                        <img src="{% static 'images/WhatsApp Image 2025-04-06 at 23.19.59_4e9d9e3e.jpg' %}" alt="עברית" class="flag-icon"> עברית
+                                    {% endif %}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </form>
+            
+            <script>
+                function changeLanguage(lang_code) {
+                    const form = document.getElementById('language-form');
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = 'language';
+                    input.value = lang_code;
+                    form.appendChild(input);
+                    form.submit();
+                }
+            </script>
+
+            <style>
+                .flag-icon {
+                    width: 20px; /* تصغير حجم العلم */
+                    height: auto;
+                    margin-right: 8px; /* مسافة بين العلم والنص */
+                }
+            </style>
+            
+            
+
+            <!-- User Profile -->
             {% if user.is_authenticated %}
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -28,24 +90,37 @@
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
                         <li><a class="dropdown-item" href="{% url 'accounts:profile' %}">
-                            <i class="fas fa-user me-2"></i>Profile
+                            <i class="fas fa-user me-2"></i>{% trans 'Profile' %}
                         </a></li>
-                                                <li><a class="dropdown-item" href="#"><i class="fas fa-shopping-cart me-2"></i>Booking Order</a></li>
+                        {% comment %} <li><a class="dropdown-item" href="#"><i class="fas fa-shopping-cart me-2"></i>Booking Order</a></li> {% endcomment %}
                         <li>
                             <form method="post" action="{% url 'account_logout' %}" class="d-inline">
                                 {% csrf_token %}
-                                <button type="submit" class="dropdown-item text-danger"><i class="fas fa-sign-out-alt me-2"></i>Logout</button>
+                                <button type="submit" class="dropdown-item text-danger"><i class="fas fa-sign-out-alt me-2"></i>{% trans 'Logout' %}</button>
                             </form>
                         </li>
                     </ul>
                 </div>
             {% else %}
                 <div class="d-flex gap-2">
-                    <a href="{% url 'account_login' %}" class="btn btn-success">Log in</a>
-                    <a href="{% url 'account_signup' %}" class="btn btn-outline-primary">Sign Up</a>
+                    <a href="{% url 'account_login' %}" class="btn btn-success">{% trans 'Log in'%}</a>
+                    <a href="{% url 'account_signup' %}" class="btn btn-outline-primary">{% trans 'Sign Up' %}</a>
                 </div>
             {% endif %}
         </div>
         
     </div>
 </header>
+
+<!-- Add this JavaScript at the end of your body or in your script section -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const languageSelect = document.getElementById('language-select');
+        const languageForm = document.getElementById('language-form');
+        
+        languageSelect.addEventListener('change', function() {
+            // Automatically submit the form when language changes
+            languageForm.submit();
+        });
+    });
+</script>
