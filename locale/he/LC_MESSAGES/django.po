@@ -1,17 +1,17 @@
-# כותרת תיאורית כלשהי.
-# זכויות יוצרים (C) שנת מחזיק זכויות היוצרים של החבילה
-# קובץ זה מופץ תחת אותה רישיון כמו חבילת החבילה.
-# מחבר ראשון <EMAIL@ADDRESS>, שנה.
+# תרגום לעברית
+# Copyright (C) 2025 בעל זכויות היוצרים של החבילה
+# קובץ זה מופץ תחת אותה רישיון כמו חבילת PACKAGE.
+# מחבר ראשון <EMAIL@ADDRESS>, 2025.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: גרסת החבילה\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-07 20:21+0200\n"
-"PO-Revision-Date: שנה-חודש-יום שעה:דקה+אזור\n"
+"POT-Creation-Date: 2025-04-07 21:45+0200\n"
+"PO-Revision-Date: 2025-04-07 21:45+0200\n"
 "Last-Translator: שם מלא <EMAIL@ADDRESS>\n"
-"Language-Team: שפה <LL@li.org>\n"
+"Language-Team: עברית <he@li.org>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,86 +19,113 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % "
 "1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
 
-#: .\about\templates\about\about.html:18
+#: .\about\templates\about\about.html:15
 msgid "About Us"
 msgstr "אודותינו"
 
-#: .\about\templates\about\about.html:35
+#: .\about\templates\about\about.html:16
+msgid "Learn About Our Commitment to Excellence"
+msgstr "למדו על המחויבות שלנו למצוינות"
+
+#: .\about\templates\about\about.html:31
 msgid "Why Choose Us"
 msgstr "למה לבחור בנו"
 
-#: .\about\templates\about\about.html:36
-msgid "We Are Your Best Choice"
-msgstr "אנחנו הבחירה הטובה ביותר שלך"
+#: .\about\templates\about\about.html:32
+msgid "Your Health Is Our Priority"
+msgstr "הבריאות שלכם היא העדיפות שלנו"
 
-#: .\about\templates\about\about.html:41
+#: .\about\templates\about\about.html:38
 msgid ""
-"We are committed to providing the highest quality services and products to "
-"our customers."
-msgstr "אנו מחויבים לספק את השירותים והמוצרים האיכותיים ביותר ללקוחותינו."
-
-#: .\about\templates\about\about.html:42
-msgid ""
-"Our team of experts is dedicated to ensuring your satisfaction and "
-"delivering exceptional results."
+"We are committed to providing the highest quality medical services and care "
+"to our patients. Our dedicated team of healthcare professionals works "
+"tirelessly to ensure your well-being and comfort."
 msgstr ""
-"צוות המומחים שלנו מחויב להבטיח את שביעות רצונך ולספק תוצאות יוצאות דופן."
-
-#: .\about\templates\about\about.html:48
-msgid "High-quality products and services"
-msgstr "מוצרים ושירותים באיכות גבוהה"
+"אנו מחויבים לספק את השירותים הרפואיים והטיפול האיכותיים ביותר למטופלים שלנו. "
+"צוות אנשי המקצוע הרפואיים המסור שלנו עובד ללא לאות כדי להבטיח את רווחתכם ונוחותכם."
 
 #: .\about\templates\about\about.html:49
-msgid "Experienced and professional team"
-msgstr "צוות מנוסה ומקצועי"
+msgid "High-quality medical services"
+msgstr "שירותים רפואיים באיכות גבוהה"
 
 #: .\about\templates\about\about.html:50
-msgid "Customer satisfaction guaranteed"
-msgstr "שביעות רצון לקוחות מובטחת"
+msgid "We provide top-tier healthcare that meets international standards."
+msgstr "אנו מספקים טיפול רפואי ברמה הגבוהה ביותר העומד בסטנדרטים בינלאומיים."
 
-#: .\about\templates\about\about.html:51
-msgid "Competitive pricing and flexible plans"
-msgstr "תמחור תחרותי ותוכניות גמישות"
+#: .\about\templates\about\about.html:59
+msgid "Experienced medical team"
+msgstr "צוות רפואי מנוסה"
 
-#: .\about\templates\about\about.html:52
+#: .\about\templates\about\about.html:60
+msgid "Our doctors and staff have years of experience in their specialties."
+msgstr "הרופאים והצוות שלנו בעלי ניסיון של שנים בתחומי ההתמחות שלהם."
+
+#: .\about\templates\about\about.html:69
+msgid "Patient satisfaction guaranteed"
+msgstr "שביעות רצון המטופלים מובטחת"
+
+#: .\about\templates\about\about.html:70
+msgid "Your comfort and results are our top priority."
+msgstr "הנוחות והתוצאות שלכם הן העדיפות העליונה שלנו."
+
+#: .\about\templates\about\about.html:79
 msgid "Fast and reliable support"
 msgstr "תמיכה מהירה ואמינה"
 
-#: .\about\templates\about\about.html:67
-msgid "Meet The Doctor"
-msgstr "פגוש את הרופא"
+#: .\about\templates\about\about.html:80
+msgid "We're always available to answer your questions and concerns."
+msgstr "אנו תמיד זמינים לענות על שאלותיכם ודאגותיכם."
 
-#: .\about\templates\about\about.html:79
-msgid "Consult your doctor"
-msgstr "התייעץ עם הרופא שלך"
+#: .\about\templates\about\about.html:95
+msgid "Years of Experience"
+msgstr "שנות ניסיון"
 
-#: .\contact\templates\contact\contact.html:40 .\templates\parts\footer.html:88
+#: .\about\templates\about\about.html:109
+msgid "Expert Care"
+msgstr "טיפול מומחה"
+
+#: .\about\templates\about\about.html:110
+msgid "Meet Our Doctor"
+msgstr "פגשו את הרופא שלנו"
+
+#: .\about\templates\about\about.html:112
+msgid ""
+"Our experienced doctor is committed to providing you with the highest "
+"quality care and personalized treatment plans."
+msgstr ""
+"הרופא המנוסה שלנו מחויב לספק לכם את הטיפול האיכותי ביותר ותוכניות טיפול מותאמות אישית."
+
+#: .\about\templates\about\about.html:128
+msgid "Consult Now"
+msgstr "התייעצו עכשיו"
+
+#: .\contact\templates\contact\contact.html:43 .\templates\parts\footer.html:88
 #: .\templates\parts\navbar.html:20
 msgid "Contact"
 msgstr "צור קשר"
 
-#: .\contact\templates\contact\contact.html:58
+#: .\contact\templates\contact\contact.html:83
 msgid "Get in Touch"
-msgstr "צור קשר"
+msgstr "צרו קשר"
 
-#: .\contact\templates\contact\contact.html:68
-#: .\contact\templates\contact\contact.html:69
+#: .\contact\templates\contact\contact.html:93
+#: .\contact\templates\contact\contact.html:94
 msgid "Enter Your Subject"
-msgstr "הזן את הנושא שלך"
+msgstr "הזינו את הנושא שלכם"
 
-#: .\contact\templates\contact\contact.html:76
-#: .\contact\templates\contact\contact.html:77
+#: .\contact\templates\contact\contact.html:101
+#: .\contact\templates\contact\contact.html:102
 msgid "Enter Your email"
-msgstr "הזן את האימייל שלך"
+msgstr "הזינו את הדוא\"ל שלכם"
 
-#: .\contact\templates\contact\contact.html:84
-#: .\contact\templates\contact\contact.html:85
+#: .\contact\templates\contact\contact.html:109
+#: .\contact\templates\contact\contact.html:110
 msgid "Enter Your Message"
-msgstr "הזן את ההודעה שלך"
+msgstr "הזינו את ההודעה שלכם"
 
-#: .\contact\templates\contact\contact.html:90
+#: .\contact\templates\contact\contact.html:115
 msgid "Send Message"
-msgstr "שלח הודעה"
+msgstr "שלחו הודעה"
 
 #: .\home\models.py:6
 msgid "Title"
@@ -138,34 +165,33 @@ msgid ""
 "team is dedicated to providing you with the best cosmetic solutions that "
 "enhance your beauty and give you a sense of satisfaction and confidence."
 msgstr ""
-"תיהנו מחוויית יופי ייחודית בסביבה חמה ונוחה. הצוות שלנו מחויב לספק לכם את "
-"הפתרונות הקוסמטיים הטובים ביותר שמשפרים את יופייכם ומעניקים לכם תחושת סיפוק "
-"וביטחון."
+"תיהנו מחוויית יופי ייחודית בסביבה חמה ונוחה. הצוות שלנו מחויב לספק לכם את הפתרונות הקוסמטיים הטובים ביותר "
+"שמשפרים את היופי שלכם ומעניקים לכם תחושת סיפוק וביטחון."
 
 #: .\home\templates\home\home.html:93
 msgid "Make your appointment today!"
-msgstr "קבעו תור עוד היום!"
+msgstr "קבעו את התור שלכם עוד היום!"
 
 #: .\home\templates\home\home.html:99
 msgid "+972 50-453-8833"
 msgstr "+972 50-453-8833"
 
 #: .\home\templates\home\home.html:113
-#: .\services\templates\services\services.html:16
-#: .\services\templates\services\services.html:30
+#: .\services\templates\services\services.html:17
+#: .\services\templates\services\services.html:51
 #: .\templates\parts\footer.html:87 .\templates\parts\navbar.html:19
 msgid "Services"
 msgstr "שירותים"
 
 #: .\home\templates\home\home.html:114
-#: .\services\templates\services\services.html:31
+#: .\services\templates\services\services.html:52
 msgid "Special Services"
 msgstr "שירותים מיוחדים"
 
 #: .\home\templates\home\home.html:133
-#: .\services\templates\services\services.html:50
+#: .\services\templates\services\services.html:71
 msgid "Book Now"
-msgstr "הזמן עכשיו"
+msgstr "הזמינו עכשיו"
 
 #: .\home\templates\home\home.html:331
 msgid "Discount"
@@ -205,7 +231,7 @@ msgstr "מחיר כולל"
 
 #: .\services\templates\services\order_summary.html:25
 msgid "Proceed to Checkout"
-msgstr "המשך לתשלום"
+msgstr "המשיכו לתשלום"
 
 #: .\services\templates\services\order_summary.html:27
 msgid "Back To Services"
@@ -218,13 +244,10 @@ msgid ""
 "about your beauty and guarantee you the best results with the highest "
 "standards of safety and quality."
 msgstr ""
-"מרפאה קוסמטית משולבת לחלוטין המציעה את הטכנולוגיות העדכניות ביותר בטיפוח "
-"העור, מילויים, בוטוקס, הסרת שיער בלייזר וקווי מתאר פנים. אנו דואגים ליופי "
-"שלכם ומבטיחים לכם את התוצאות הטובות ביותר עם הסטנדרטים הגבוהים ביותר של "
-"בטיחות ואיכות."
+"מרפאה קוסמטית משולבת לחלוטין המציעה את הטכנולוגיות העדכניות ביותר בטיפוח העור, מילויים, בוטוקס, הסרת שיער בלייזר "
+"ועיצוב פנים. אנו דואגים ליופי שלכם ומבטיחים לכם את התוצאות הטובות ביותר עם הסטנדרטים הגבוהים ביותר של בטיחות ואיכות."
 
 #: .\templates\parts\footer.html:25
-
 msgid "Contact Info"
 msgstr "מידע ליצירת קשר"
 
@@ -234,7 +257,7 @@ msgstr "המיקום שלנו"
 
 #: .\templates\parts\footer.html:62
 msgid "Follow Us"
-msgstr "עקוב אחרינו"
+msgstr "עקבו אחרינו"
 
 #: .\templates\parts\footer.html:85 .\templates\parts\navbar.html:17
 msgid "Home"
@@ -246,16 +269,16 @@ msgstr "אודותינו"
 
 #: .\templates\parts\navbar.html:93
 msgid "Profile"
-msgstr "פּרוֹפִיל"
+msgstr "פרופיל"
 
 #: .\templates\parts\navbar.html:100
 msgid "Logout"
-msgstr "התנתק"
+msgstr "התנתקות"
 
 #: .\templates\parts\navbar.html:107
 msgid "Log in"
-msgstr "התחבר"
+msgstr "התחברות"
 
 #: .\templates\parts\navbar.html:108
 msgid "Sign Up"
-msgstr "הירשם"
+msgstr "הרשמה"

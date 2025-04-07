@@ -4,18 +4,94 @@
 
 {% block body %}
 
-<!-- Hero Section -->
-<section class="home d-flex flex-column align-items-start justify-content-end">
-    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/about.jpg' %}" data-speed="0.8"></div>
-    <div class="home_overlay">
-        <img src="{% static 'images/home_overlay.png' %}" alt="Home Overlay">
+<!-- Hero Section - مع تأثيرات متحركة وتصميم محسّن -->
+<section class="hero-section position-relative">
+    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/about.jpg' %}" data-speed="0.6"></div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="animated-content">
+                    <h1 class="hero-title">{% trans "About Us" %}</h1>
+                    <div class="hero-subtitle">{% trans "Learn About Our Commitment to Excellence" %}</div>
+                    <div class="hero-divider"></div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="home_container">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="home_content">
-                        <div class="home_title">{% trans "About Us" %}</div>
+</section>
+
+<!-- Why Choose Us Section - أكثر جاذبية وتنظيماً -->
+<section class="why-choose-us section-padding">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Content Column -->
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="section-heading">
+                    <span class="section-badge">{% trans "Why Choose Us" %}</span>
+                    <h2 class="section-title">{% trans "Your Health Is Our Priority" %}</h2>
+                    <div class="section-divider"></div>
+                </div>
+                
+                <div class="intro-text mb-4">
+                    <p class="lead">
+                        {% trans "We are committed to providing the highest quality medical services and care to our patients. Our dedicated team of healthcare professionals works tirelessly to ensure your well-being and comfort." %}
+                    </p>
+                </div>
+
+                <!-- Features List -->
+                <div class="features-wrapper">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>{% trans "High-quality medical services" %}</h4>
+                            <p>{% trans "We provide top-tier healthcare that meets international standards." %}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>{% trans "Experienced medical team" %}</h4>
+                            <p>{% trans "Our doctors and staff have years of experience in their specialties." %}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>{% trans "Patient satisfaction guaranteed" %}</h4>
+                            <p>{% trans "Your comfort and results are our top priority." %}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>{% trans "Fast and reliable support" %}</h4>
+                            <p>{% trans "We're always available to answer your questions and concerns." %}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Image Column -->
+            <div class="col-lg-6">
+                <div class="about-image-container">
+                    <div class="about-image main-image">
+                        {% comment %} <img src="{% static 'images/about.jpg' %}" alt="About Our Clinic" class="img-fluid"> {% endcomment %}
+                    </div>
+                    <div class="experience-badge">
+                        <span class="years">15+</span>
+                        <span class="text">{% trans "Years of Experience" %}</span>
                     </div>
                 </div>
             </div>
@@ -23,68 +99,41 @@
     </div>
 </section>
 
-<div class="home-overlay">
-    <!-- Why Choose Us Section -->
-    <section class="why-choose-us py-5">
-        <div class="container">
-            <div class="row">
-                <!-- Content Column -->
-                <div class="col-lg-8">
-                    <div class="content">
-                        <div class="section-title-container mb-4">
-                            <div class="section-subtitle">{% trans "Why Choose Us" %}</div>
-                            <h2 class="section-title">{% trans "We Are Your Best Choice" %}</h2>
-                        </div>
-                        
-                        <div class="intro-text mb-5">
-                            <p>
-                                {% trans "We are committed to providing the highest quality services and products to our customers." %}
-                                {% trans "Our team of experts is dedicated to ensuring your satisfaction and delivering exceptional results." %}
-                            </p>
-                        </div>
-
-                        <!-- Features List -->
-                        <ul class="features-list list-unstyled">
-                            <li><i class="fas fa-check"></i> {% trans "High-quality products and services" %}</li>
-                            <li><i class="fas fa-check"></i> {% trans "Experienced and professional team" %}</li>
-                            <li><i class="fas fa-check"></i> {% trans "Customer satisfaction guaranteed" %}</li>
-                            <li><i class="fas fa-check"></i> {% trans "Competitive pricing and flexible plans" %}</li>
-                            <li><i class="fas fa-check"></i> {% trans "Fast and reliable support" %}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
-
-<!-- Team Section -->
-<section class="team-section py-5">
+<!-- Team Section - دكتور أكثر احترافية -->
+<section class="team-section section-padding bg-light">
     <div class="container">
-        <div class="row">
-            <div class="col text-center">
-                <div class="section-title-container mb-5">
-                    <h2 class="section-title">{% trans "Meet The Doctor" %}</h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-7 text-center">
+                <div class="section-heading mb-5">
+                    <span class="section-badge">{% trans "Expert Care" %}</span>
+                    <h2 class="section-title">{% trans "Meet Our Doctor" %}</h2>
+                    <div class="section-divider mx-auto"></div>
+                    <p class="section-subtitle">{% trans "Our experienced doctor is committed to providing you with the highest quality care and personalized treatment plans." %}</p>
                 </div>
             </div>
         </div>
 
-        <div class="row team-row">
+        <div class="row team-row justify-content-center">
             {% for member in team_members %}
             <!-- Team Member Item -->
-            <div class="col-lg-4 team-col mb-4">
-                <div class="team-item text-center d-flex flex-column align-items-center justify-content-end">
-                    <div class="team-image mb-3">
-                        <img src="{{ member.image.url }}" alt="{{ member.name }}" class="img-fluid rounded-circle">
-                        <h4 class="mt-3">{% trans 'Consult your doctor' %}</h4>
+            <div class="col-lg-4 col-md-6 team-col">
+                <div class="team-card">
+                    <div class="team-image-wrapper">
+                        <div class="team-image">
+                            <img src="{{ member.image.url }}" alt="{{ member.name }}" class="img-fluid">
+                        </div>
+                        <div class="team-social">
+                            <a href="https://wa.me/972504538833?text=مرحبا%20دكتور" class="social-btn whatsapp-btn" target="_blank">
+                                <i class="fab fa-whatsapp"></i> {% trans 'Consult Now' %}
+                            </a>
+                        </div>
                     </div>
                     
-                    <div class="team-content text-center">
-                        <div class="team-name mb-2">
-                            <a href="https://wa.me/972504538833?text=مرحبا%20دكتور" target="_blank">{{ member.name }}</a>
-                        </div>
-                        <div class="team-title mb-3">{{ member.title }}</div>
-                        <div class="team-text">
+                    <div class="team-content">
+                        <h3 class="team-name">{{ member.name }}</h3>
+                        <div class="team-title">{{ member.title }}</div>
+                        <div class="team-divider"></div>
+                        <div class="team-description">
                             <p>{{ member.description }}</p>
                         </div>
                     </div>
@@ -94,5 +143,455 @@
         </div>
     </div>
 </section>
+
+<!-- Call to Action Section - جديد -->
+
+<style>
+/* ===== GENERAL STYLES ===== */
+.section-padding {
+    padding: 100px 0;
+}
+
+@media (max-width: 992px) {
+    .section-padding {
+        padding: 70px 0;
+    }
+}
+
+/* ===== HERO SECTION ===== */
+.hero-section {
+    height: 500px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.parallax_background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    {% comment %} background: linear-gradient(90deg, rgba(25,28,41,0.8) 0%, rgba(25,28,41,0.4) 100%); {% endcomment %}
+    z-index: 2;
+}
+
+{% comment %} .hero-content {
+    position: relative;
+    z-index: 3;
+    padding: 100px 0;
+} {% endcomment %}
+
+.animated-content {
+    animation: fadeIn 1s ease-out;
+} 
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color:rgb(0, 0, 0);
+    margin-bottom: 15px;
+    {% comment %} text-shadow: 0 2px 5px rgba(0,0,0,0.3); {% endcomment %}
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 20px;
+}
+
+{% comment %} .hero-divider {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #4e7df1, #2575fc);
+    margin-bottom: 30px;
+    border-radius: 2px;
+} {% endcomment %}
+
+/* ===== SECTION HEADINGS ===== */
+.section-heading {
+    margin-bottom: 40px;
+}
+
+.section-badge {
+    display: inline-block;
+    background: rgba(37, 117, 252, 0.1);
+    color: #2575fc;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.section-divider {
+    width: 70px;
+    height: 3px;
+    background: linear-gradient(90deg, #4e7df1, #2575fc);
+    margin-bottom: 25px;
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* ===== WHY CHOOSE US SECTION ===== */
+.why-choose-us {
+    position: relative;
+    background-color: #fff;
+}
+
+.intro-text .lead {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+}
+
+.features-wrapper {
+    margin-top: 30px;
+}
+
+.feature-item {
+    display: flex;
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    flex: 0 0 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4e7df1, #2575fc);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    box-shadow: 0 10px 20px rgba(37, 117, 252, 0.2);
+}
+
+.feature-icon i {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.feature-text h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.feature-text p {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 0;
+}
+
+/* About Image */
+.about-image-container {
+    position: relative;
+    padding-bottom: 30px;
+    padding-right: 30px;
+}
+
+.about-image {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.about-image img {
+    border-radius: 10px;
+    transition: all 0.5s ease;
+}
+
+.about-image-container:hover img {
+    transform: scale(1.03);
+}
+
+.experience-badge {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, #4e7df1, #2575fc);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(37, 117, 252, 0.3);
+    animation: pulse 2s infinite;
+}
+
+.experience-badge .years {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.experience-badge .text {
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* ===== TEAM SECTION ===== */
+.team-section {
+    background-color: #f9fbff;
+}
+
+.team-card {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    margin-bottom: 30px;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+.team-image-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.team-image {
+    height: 300px;
+    overflow: hidden;
+}
+
+.team-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.5s ease;
+}
+
+.team-card:hover .team-image img {
+    transform: scale(1.05);
+}
+
+.team-social {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.team-card:hover .team-social {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.social-btn {
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #333;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.social-btn i {
+    margin-right: 8px;
+}
+
+.whatsapp-btn {
+    background-color: #25D366;
+    color: #fff;
+}
+
+.whatsapp-btn:hover {
+    background-color: #128C7E;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(18, 140, 126, 0.4);
+}
+
+.team-content {
+    padding: 25px;
+    text-align: center;
+}
+
+.team-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.team-title {
+    font-size: 1rem;
+    color: #2575fc;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.team-divider {
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, #4e7df1, #2575fc);
+    margin: 0 auto 15px;
+}
+
+.team-description {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* ===== CTA SECTION ===== */
+.cta-section {
+    background: linear-gradient(135deg, #4e7df1, #2575fc);
+    padding: 60px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-section:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('{% static "images/pattern.png" %}') repeat;
+    opacity: 0.05;
+}
+
+.cta-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.cta-text {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 0;
+}
+
+.btn-cta {
+    padding: 15px 30px;
+    background-color: #fff;
+    color: #2575fc;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    display: inline-block;
+}
+
+.btn-cta:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    color: #2575fc;
+    text-decoration: none;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(37, 117, 252, 0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(37, 117, 252, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 117, 252, 0); }
+}
+
+/* ===== RESPONSIVE STYLES ===== */
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .cta-title {
+        font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: 400px;
+    }
+    
+    .about-image-container {
+        padding-right: 0;
+        padding-bottom: 0;
+        margin-bottom: 50px;
+    }
+    
+    .experience-badge {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .experience-badge .years {
+        font-size: 2rem;
+    }
+    
+    .experience-badge .text {
+        font-size: 0.9rem;
+    }
+}
+</style>
 
 {% endblock body %}

@@ -12,7 +12,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <div class="home_content">
+                        <div class="home_content animated-content">
                             <div class="home_title">{% trans 'Services' %}</div>
                         </div>
                     </div>
@@ -20,6 +20,25 @@
             </div>
         </div>
     </div>
+    
+    <style>
+        .animated-content {
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .home_title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: rgb(0, 0, 0);
+            margin-bottom: 15px;
+            {% comment %} text-shadow: 0 2px 5px rgba(0,0,0,0.3); {% endcomment %}
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 
     <!-- Services -->
     <div class="services py-5">

@@ -30,21 +30,46 @@
     <!-- Home -->
 
     <div class="home d-flex flex-column align-items-start justify-content-end">
-        <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/contact.jpg' %}" data-speed="0.8"></div>
-        <div class="home_overlay"><img src="{% static 'images/home_overlay.png' %}" alt=""></div>
-        <div class="home_container">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <div class="home_content">
-                            <div class="home_title">{% trans 'Contact' %}</div>
-                            <div class="home_text"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+      <div class="parallax_background parallax-window" 
+           data-parallax="scroll" 
+           data-image-src="{% static 'images/contact.jpg' %}" 
+           data-speed="0.8"></div>
+      <div class="home_overlay"><img src="{% static 'images/home_overlay.png' %}" alt=""></div>
+      <div class="home_container">
+          <div class="container">
+              <div class="row">
+                  <div class="col">
+                      <div class="home_content">
+                          <div class="home_title animated-content">{% trans 'Contact' %}</div>
+                          <div class="home_text"></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  <style>
+      .animated-content {
+          animation: fadeIn 1s ease-out;
+      }
+      
+      .home_title {
+          font-size: 3.5rem;
+          font-weight: 700;
+          color: rgb(0, 0, 0);
+          margin-bottom: 15px;
+      }
+      
+      @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+      }
+
+      
+  </style>
+
+    
 
     <!-- Contact -->
 
