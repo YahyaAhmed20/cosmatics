@@ -7,12 +7,16 @@
         <div class="logo">
             <a href="/">
                 <div>Natour<span> Clinic </span></div>
-                <div></div>
             </a>
         </div>
 
+        <!-- Mobile Menu Toggle Button -->
+        <button class="navbar-toggler d-lg-none" type="button" id="mobile-menu-button">
+            <i class="fas fa-bars"></i>
+        </button>
+
         <!-- Main Navigation -->
-        <nav class="main_nav">
+        <nav class="main_nav d-none d-lg-block">
             <ul class="d-flex flex-row align-items-center">
                 <li {% if request.path == '/' or 'home' in request.path %} class="active" {% endif %}><a href="{% url 'home:home' %}">{% trans 'Home' %}</a></li>
                 <li {% if 'about' in request.path %} class="active" {% endif %}><a href="{% url 'about:about' %}">{% trans 'About us' %}</a></li>
@@ -21,7 +25,7 @@
             </ul>
         </nav>
 
-        <div class="d-flex align-items-center ml-auto gap-3">
+        <div class="d-none d-lg-flex align-items-center ml-auto gap-3">
             <!-- Language Selector -->
             <form id="language-form" action="{% url 'set_language' %}" method="post" class="d-flex align-items-center">
                 {% csrf_token %}
@@ -30,7 +34,6 @@
                 <!-- Language Dropdown -->
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                        <!-- عرض العلم المختار في الـ navbar -->
                         <span id="selected-language">
                             {% if CURRENT_LANGUAGE == 'en' %}
                                 <img src="{% static 'images/english.jpg' %}" alt="English" class="flag-icon"> English
@@ -59,28 +62,6 @@
                     </ul>
                 </div>
             </form>
-            
-            <script>
-                function changeLanguage(lang_code) {
-                    const form = document.getElementById('language-form');
-                    const input = document.createElement('input');
-                    input.type = 'hidden';
-                    input.name = 'language';
-                    input.value = lang_code;
-                    form.appendChild(input);
-                    form.submit();
-                }
-            </script>
-
-            <style>
-                .flag-icon {
-                    width: 20px; /* تصغير حجم العلم */
-                    height: auto;
-                    margin-right: 8px; /* مسافة بين العلم والنص */
-                }
-            </style>
-            
-            
 
             <!-- User Profile -->
             {% if user.is_authenticated %}
@@ -92,7 +73,6 @@
                         <li><a class="dropdown-item" href="{% url 'accounts:profile' %}">
                             <i class="fas fa-user me-2"></i>{% trans 'Profile' %}
                         </a></li>
-                        {% comment %} <li><a class="dropdown-item" href="#"><i class="fas fa-shopping-cart me-2"></i>Booking Order</a></li> {% endcomment %}
                         <li>
                             <form method="post" action="{% url 'account_logout' %}" class="d-inline">
                                 {% csrf_token %}
@@ -108,19 +88,196 @@
                 </div>
             {% endif %}
         </div>
-        
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay">
+        <div class="mobile-menu-container">
+            <div class="mobile-menu-header d-flex justify-content-between align-items-center p-3">
+                <div class="logo">
+                    <div>Natour<span> Clinic </span></div>
+                </div>
+                <button type="button" class="btn-close" id="close-mobile-menu"></button>
+            </div>
+            
+            <!-- Mobile Navigation Menu -->
+            <ul class="mobile-nav-menu">
+                <li {% if request.path == '/' or 'home' in request.path %} class="active" {% endif %}><a href="{% url 'home:home' %}" class="d-block p-3">{% trans 'Home' %}</a></li>
+                <li {% if 'about' in request.path %} class="active" {% endif %}><a href="{% url 'about:about' %}" class="d-block p-3">{% trans 'About us' %}</a></li>
+                <li {% if 'services' in request.path %} class="active" {% endif %}><a href="{% url 'services:services' %}" class="d-block p-3">{% trans 'Services' %}</a></li>
+                <li {% if 'contact' in request.path %} class="active" {% endif %}><a href="{% url 'contact:send_text' %}" class="d-block p-3">{% trans 'Contact' %}</a></li>
+            </ul>
+            
+            <!-- Mobile Language Selector -->
+            <div class="p-3 border-top">
+                <p class="mb-2">{% trans 'Select Language' %}:</p>
+                <div class="d-flex flex-column gap-2">
+                    {% get_available_languages as LANGUAGES %}
+                    {% for lang_code, lang_name in LANGUAGES %}
+                        <a href="#" onclick="changeLanguage('{{ lang_code }}')" class="btn btn-outline-secondary d-flex align-items-center">
+                            {% if lang_code == 'en' %}
+                                <img src="{% static 'images/english.jpg' %}" alt="English" class="flag-icon"> English
+                            {% elif lang_code == 'ar' %}
+                                <img src="{% static 'images/WhatsApp Image 2025-04-06 at 23.15.31_035bf660.jpg' %}" alt="عربي" class="flag-icon"> عربي
+                            {% elif lang_code == 'he' %}
+                                <img src="{% static 'images/WhatsApp Image 2025-04-06 at 23.19.59_4e9d9e3e.jpg' %}" alt="עברית" class="flag-icon"> עברית
+                            {% endif %}
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <!-- Mobile Authentication -->
+            <div class="p-3 border-top">
+                {% if user.is_authenticated %}
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-user-circle me-2"></i>
+                        <span>{{ user.username }}</span>
+                    </div>
+                    <a href="{% url 'accounts:profile' %}" class="btn btn-primary d-block mb-2">
+                        <i class="fas fa-user me-2"></i>{% trans 'Profile' %}
+                    </a>
+                    <form method="post" action="{% url 'account_logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger d-block w-100">
+                            <i class="fas fa-sign-out-alt me-2"></i>{% trans 'Logout' %}
+                        </button>
+                    </form>
+                {% else %}
+                    <div class="d-grid gap-2">
+                        <a href="{% url 'account_login' %}" class="btn btn-success">{% trans 'Log in'%}</a>
+                        <a href="{% url 'account_signup' %}" class="btn btn-outline-primary">{% trans 'Sign Up' %}</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
     </div>
 </header>
 
-<!-- Add this JavaScript at the end of your body or in your script section -->
+<!-- CSS for mobile menu -->
+<style>
+    /* Flag Icons */
+    .flag-icon {
+        width: 20px;
+        height: auto;
+        margin-right: 8px;
+    }
+    
+    /* Mobile Menu Button */
+    .navbar-toggler {
+        border: none;
+        background: transparent;
+        font-size: 1.5rem;
+        padding: 0.5rem;
+    }
+    
+    /* Mobile Menu Overlay */
+    .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        display: none;
+    }
+    
+    .mobile-menu-container {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 280px;
+        height: 100%;
+        background-color: white;
+        overflow-y: auto;
+        transition: right 0.3s ease;
+        z-index: 1001;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    }
+    
+    .mobile-menu-overlay.active .mobile-menu-container {
+        right: 0;
+    }
+    
+    .mobile-menu-overlay.active {
+        display: block;
+    }
+    
+    .mobile-nav-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .mobile-nav-menu li {
+        border-bottom: 1px solid #eee;
+    }
+    
+    .mobile-nav-menu li.active {
+        background-color: #f8f9fa;
+    }
+    
+    .mobile-nav-menu a {
+        color: #333;
+        text-decoration: none;
+    }
+    
+    /* RTL support for mobile menu */
+    html[dir="rtl"] .mobile-menu-container {
+        right: auto;
+        left: -300px;
+    }
+    
+    html[dir="rtl"] .mobile-menu-overlay.active .mobile-menu-container {
+        right: auto;
+        left: 0;
+    }
+    
+    /* Make sure header is responsive */
+    @media (max-width: 991px) {
+        .header_content {
+            padding: 0.5rem 1rem;
+        }
+    }
+</style>
+
+<!-- JavaScript for mobile menu -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const languageSelect = document.getElementById('language-select');
-        const languageForm = document.getElementById('language-form');
+        // Language change function
+        function changeLanguage(lang_code) {
+            const form = document.getElementById('language-form');
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'language';
+            input.value = lang_code;
+            form.appendChild(input);
+            form.submit();
+        }
+        window.changeLanguage = changeLanguage;
         
-        languageSelect.addEventListener('change', function() {
-            // Automatically submit the form when language changes
-            languageForm.submit();
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const closeMenuButton = document.getElementById('close-mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+        });
+        
+        closeMenuButton.addEventListener('click', function() {
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = ''; // Re-enable scrolling
+        });
+        
+        // Close menu when clicking outside
+        mobileMenuOverlay.addEventListener('click', function(e) {
+            if (e.target === mobileMenuOverlay) {
+                mobileMenuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
         });
     });
 </script>
