@@ -28,7 +28,9 @@ SECRET_KEY = 'django-insecure-be6-00md05vx(pj7h2*%zgx0n3g%pz^(+k&2cz1m!p9quo)78j
 DEBUG = True
 
 
-ALLOWED_HOSTS = ["*"]
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['cosmatics-production.up.railway.app', '127.0.0.1', 'localhost']
+
 
 
 
