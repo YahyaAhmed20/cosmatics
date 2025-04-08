@@ -64,7 +64,7 @@
                             <div class="service_text mb-3">
                                 <p>{{ service.description }}</p>
                             </div>
-                            <div class="service_price mb-3 text-primary fw-bold">${{ service.price }}</div>
+                            <div class="service_price mb-3 text-primary fw-bold">₪{{ service.price }}</div>
                             <div class="button_container">
                                 <a href="{% url 'services:order_summary' service.id %}" class="button button_1 intro_button trans_200"> {% trans 'Book Now' %}</a>
                             </div>
