@@ -3,7 +3,7 @@ from .models import Slide
 from .models import DiscountOffer
 from services.models import SpecialService  # استيراد النموذج SpecialService
 
-# from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import WhyChooseUs,Service
 
@@ -35,7 +35,7 @@ def home(request):
     })
 
 
-# @login_required
+@login_required
 def order_summary(request, service_id):
     # جلب بيانات الخدمة باستخدام معرف الخدمة
     service = get_object_or_404(SpecialService, id=service_id)
