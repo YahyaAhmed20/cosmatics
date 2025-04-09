@@ -219,19 +219,25 @@ EMAIL_PORT= 587
 # firebase = pyrebase.initialize_app(firebase_config)
 # auth = firebase.auth()
 
+
+
+
+# تحفه 
+
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'APP': {
             'client_id': '667352803940-n2mr6khev2m13givg06tiq6ii1ob3pvf.apps.googleusercontent.com',
             'secret': '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',
             'key': ''
-        },
-        'SCOPE': ['profile', 'email'],
-        'AUTH_PARAMS': {'access_type': 'online'},
+        }
     }
 }
 
-ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
+# ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
+# ,
+#         'SCOPE': ['profile', 'email'],
+#         'AUTH_PARAMS': {'access_type': 'online'},
 
 
 
