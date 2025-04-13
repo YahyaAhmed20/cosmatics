@@ -92,6 +92,7 @@ MIDDLEWARE = [
 
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'accounts.middleware.CompletePhoneMiddleware',
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -128,6 +129,7 @@ DATABASES = {
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
+    
 )
 
 # Password validation
@@ -223,6 +225,9 @@ EMAIL_PORT= 587
 
 
 # تحفه 
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+ACCOUNT_EMAIL_VERIFICATION = "optional"
+SOCIALACCOUNT_QUERY_EMAIL = True
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
@@ -230,12 +235,15 @@ SOCIALACCOUNT_PROVIDERS = {
             'client_id': '667352803940-n2mr6khev2m13givg06tiq6ii1ob3pvf.apps.googleusercontent.com',
             'secret': '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',
             'key': ''
-        }
+            },
+        'SCOPE': ['profile', 'email'],
+        'AUTH_PARAMS': {'access_type': 'online'},
+        
     }
 }
 
 # شيلها عشان تشغل gmail علي python
-ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
+# ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
 # ,
 #         'SCOPE': ['profile', 'email'],
 #         'AUTH_PARAMS': {'access_type': 'online'},
@@ -264,3 +272,6 @@ SOCIALACCOUNT_LOGIN_ON_GET = True
 
 ACCOUNT_AUTHENTICATED_REDIRECT_URL = '/'  # إعادة توجيه المستخدمين بعد تسجيل الدخول
 ACCOUNT_SIGNUP_REDIRECT_URL = '/'  # إعادة توجيه المستخدمين بعد التسجيل
+
+
+

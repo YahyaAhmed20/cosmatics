@@ -19,14 +19,19 @@ def signup(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('/accounts/profile')
+                return redirect('accounts:profile_edit')  # توجيه إلى تعديل الملف
     else:
         form = SignupForm()
     return render(request, 'registration/signup.html', {'form': form})
 
-@login_required  # Ensures only authenticated users can access this view
+@login_required
 def profile(request):
     profile, created = Profile.objects.get_or_create(user=request.user)
+    
+    # تحقق من حقل رقم الهاتف
+    if not profile.phone_number:  # استخدم phone_number بدلاً من phone
+        return redirect('accounts:profile_edit')  # إعادة توجيه لتعديل الملف
+    
     return render(request, 'accounts/profile.html', {'profile': profile})
 
 def profile_edit(request):

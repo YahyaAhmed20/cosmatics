@@ -23,3 +23,19 @@ class ProfileAdmin(admin.ModelAdmin):
             except Profile.DoesNotExist:
                 pass
         super().save_model(request, obj, form, change)
+        
+from django.contrib.auth.models import User
+from allauth.socialaccount.models import SocialAccount
+
+class CustomUserAdmin(admin.ModelAdmin):
+    list_display = ('username', 'email', 'signup_method', 'is_staff', 'date_joined')
+
+    def signup_method(self, obj):
+        if SocialAccount.objects.filter(user=obj).exists():
+            return "Google"
+        return "Manual"
+    signup_method.short_description = "Signup Method"
+
+# إلغاء التسجيل الافتراضي وتسجيل الجديد
+admin.site.unregister(User)
+admin.site.register(User, CustomUserAdmin)

@@ -33,3 +33,11 @@ https://cosmatics-production.up.railway.app/accounts/google/login/callback/
 
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
 
+
+
+
+
+الحاجات الي هنعملها المره الجايه هنجبر user انه يكمل كل الملف الشخصي بتاعه 
+ولو سجل ب gmail يضاف ف users 
+
+skoda gpt

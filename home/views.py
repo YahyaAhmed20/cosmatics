@@ -1,12 +1,11 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from .models import Slide
 from .models import DiscountOffer
 from services.models import SpecialService  # استيراد النموذج SpecialService
-
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import WhyChooseUs,Service
-
+from accounts.views import Profile
 # Create your views here.
 
 from django.shortcuts import get_object_or_404, render
@@ -55,3 +54,5 @@ def order_summary(request, service_id):
         'total_price': total_price,
     }
     return render(request, 'services/order_summary.html', context)
+
+

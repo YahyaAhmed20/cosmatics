@@ -2,6 +2,8 @@ from django.shortcuts import render,get_object_or_404
 from home.models import Service
 from .models import SpecialService  # استيراد النموذج SpecialService
 from django.contrib.auth.decorators import login_required
+from .models import Booking
+from django.core.mail import send_mail
 
 # Create your views here.
 
@@ -18,20 +20,23 @@ def services(request):
 
 @login_required
 def order_summary(request, service_id):
-    # جلب بيانات الخدمة باستخدام معرف الخدمة
     service = get_object_or_404(SpecialService, id=service_id)
-    
-    # التحقق من وجود مالك للخدمة
-    doctor_name = service.owner.name if service.owner else "Not Assigned"
 
-    # حساب السعر الإجمالي
-    total_price = float(service.price)  # تحويل السعر إلى float
+    # نعمل booking جديد
+    booking = Booking.objects.create(
+        user=request.user,
+        service=service,
+        is_paid=False  # لسه مدفعش
+    )
 
-    # إضافة السعر الإجمالي إلى جلسة المستخدم
+    # نحفظ ID الحجز في session علشان نستخدمه بعد الدفع
+    request.session['booking_id'] = booking.id
+
+    total_price = float(service.price)
     request.session['total_price'] = total_price
 
     context = {
-        'doctor_name': doctor_name,
+        'doctor_name': service.owner.name if service.owner else "غير محدد",
         'service': service,
         'total_price': total_price,
     }
@@ -50,8 +55,35 @@ def payment(request):
 
     return render(request, 'services/payment.html', {'total_price': total_price})
 
+@login_required
 def payment_success(request):
-    return render(request, 'services/payment_success.html')
+    booking_id = request.session.get('booking_id')
+
+    if not booking_id:
+        return render(request, 'services/payment_success.html', {'error': 'لم يتم العثور على حجز'})
+
+    booking = Booking.objects.get(id=booking_id, user=request.user)
+
+    # نحدث حالة الحجز إنه مدفوع
+    booking.is_paid = True
+    booking.save()
+
+    # (اختياري) نبعت له إيميل
+    send_mail(
+        subject='تم تأكيد الحجز',
+        message=f"تم تأكيد حجزك لخدمة: {booking.service.name}. برجاء اختيار موعد الحضور.",
+        from_email='clinic@example.com',
+        recipient_list=[request.user.email],
+        fail_silently=True
+    )
+
+    return render(request, 'services/payment_success.html', {'booking': booking})
 
 
 # views.py
+
+
+@login_required
+def my_bookings(request):
+    bookings = Booking.objects.filter(user=request.user).order_by('-created_at')
+    return render(request, 'services/my_bookings.html', {'bookings': bookings})

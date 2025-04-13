@@ -73,7 +73,11 @@
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
                         <li><a class="dropdown-item" href="{% url 'accounts:profile' %}">
+
                             <i class="fas fa-user me-2"></i>{% trans 'Profile' %}
+                        </a></li>
+                        <li><a class="dropdown-item" href="{% url 'services:my_bookings' %}">
+                            <i class="fas fa-calendar-check me-2"></i>{% trans 'My Bookings' %}
                         </a></li>
                         <li>
                             <form method="post" action="{% url 'account_logout' %}" class="d-inline">
@@ -139,6 +143,11 @@
                     <a href="{% url 'accounts:profile' %}" class="btn btn-primary d-block mb-2">
                         <i class="fas fa-user me-2"></i>{% trans 'Profile' %}
                     </a>
+                    <a href="{% url 'services:my_bookings' %}" class="btn btn-primary d-block mb-2">
+                        <i class="fas fa-calendar-check me-2"></i>{% trans 'My Bookings' %}
+                    </a>
+
+               
                     <form method="post" action="{% url 'account_logout' %}">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-danger d-block w-100">

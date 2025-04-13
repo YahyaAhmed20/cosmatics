@@ -12,7 +12,7 @@ translator.register(Slide, SlideTranslationOptions)
 
 
 class ServiceTranslationOptions(TranslationOptions):
-    fields = ('name',)
+    fields = ('name', 'description')
 
 translator.register(Service, ServiceTranslationOptions)
 
