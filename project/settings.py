@@ -247,7 +247,7 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 # شيلها عشان تشغل gmail علي python
-# ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
 # ,
 #         'SCOPE': ['profile', 'email'],
 #         'AUTH_PARAMS': {'access_type': 'online'},
