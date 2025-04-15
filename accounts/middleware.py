@@ -12,6 +12,7 @@ class CompletePhoneMiddleware:
             excluded_paths = [reverse('accounts:profile_edit'), reverse('logout'), reverse('login')]
             if request.path not in excluded_paths:
                 profile, created = Profile.objects.get_or_create(user=request.user)
-                if not profile.phone_number:  # استخدم phone_number بدلاً من phone
+                if not profile.phone_number or profile.phone_number.strip() == "":
+  # استخدم phone_number بدلاً من phone
                     return redirect('accounts:profile_edit')
         return self.get_response(request)

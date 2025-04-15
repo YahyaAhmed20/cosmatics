@@ -18,7 +18,7 @@ def home(request):
     # Fetch only the first active WhyChooseUs record
     why_choose_us = WhyChooseUs.objects.filter(is_active=True).first()
 
-    service = Service.objects.filter(is_active=True)[:2]
+    service = Service.objects.filter(is_active=True)[:3]
 
     # الحصول على أول عرض نشط فقط
     try:
